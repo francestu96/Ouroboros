@@ -1,0 +1,8 @@
+{
+    "token": "<your_token>",
+    "exchange": "{{exchange}}",
+    "orderId":"{{strategy.order.id}}",
+    "symbol": "{{ticker}}",
+    "action": "{{strategy.order.action}}",
+    "size": "{{strategy.order.contracts}}"
+}
