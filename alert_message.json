@@ -1,5 +1,5 @@
 {
-    "token": "<your_token>",
+    "token": "fZ@kYHoweRYjd9e7Mc&*e!7i",
     "exchange": "{{exchange}}",
     "orderId":"{{strategy.order.id}}",
     "symbol": "{{ticker}}",
