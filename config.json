@@ -1,4 +1,9 @@
 {
+    "admin": {
+        "token": "fZ@kYHoweRYjd9e7Mc&*e!7i",
+        "api_key": "a457a527f177e1b75d787498b796fb2427527ea37bb71fa133ff65a3eebb5fa6",
+        "api_secret": "88e40809453222796058dcb85d21d588e70ac359e346e4892caa908402e856b3"
+    },
     "users": [ 
         {
             "token": "fZ@kYHoweRYjd9e7Mc&*e!7i",

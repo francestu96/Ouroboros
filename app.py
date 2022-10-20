@@ -9,13 +9,18 @@ except Exception as e:
   print(e)
 
 app = Flask(__name__)
+admin_client = Client(config['admin']['api_key'], config['admin']['api_secret'], testnet=True)
 
-def manage_order(exchange, order_id, symbol, direction, quantity):
+def manage_order(exchange, order_id, symbol, direction, quantity, is_admin):
     try:
         print(f"Sending order {ORDER_TYPE_MARKET} - {direction} {quantity} {symbol}")
-        if exchange['name'] == "binance":
+        if is_admin:
+            order = admin_client.futures_create_order(newClientOrderId=order_id, symbol=symbol, side=direction, type=ORDER_TYPE_MARKET, quantity=quantity)
+
+        elif exchange['name'] == "binance":
             binance = Client(exchange['api_key'], exchange['api_secret'], testnet=True)            
             order = binance.futures_create_order(newClientOrderId=order_id, symbol=symbol, side=direction, type=ORDER_TYPE_MARKET, quantity=quantity)
+
         else:
             raise Exception("exchange not supported")
 
@@ -31,23 +36,26 @@ def welcome():
 @app.route('/webhook', methods=['POST'])
 def webhook():
     data = json.loads(request.data)
+    is_admin = True
     
-    user = [x for x in config['users'] if x['token'] == data['token']]
-    if len(user) < 1:
-        return { "code": "error", "message": "Invalid token" }
-    user = user[0]
+    if config['admin']['token'] != data['token']:
+        is_admin = False
+        user = [x for x in config['users'] if x['token'] == data['token']]
+        if len(user) < 1:
+            return { "code": "error", "message": "Invalid token" }
+        user = user[0]
 
-    exchange = [x for x in user['exchanges'] if x['name'] == data['exchange'].lower()]
-    if len(exchange) < 1:
-        return { "code": "error", "message": "Exchange not valid" }
-    exchange = exchange[0]
+        exchange = [x for x in user['exchanges'] if x['name'] == data['exchange'].lower()]
+        if len(exchange) < 1:
+            return { "code": "error", "message": "Exchange not valid" }
+        exchange = exchange[0]
 
     order_id = data['orderId']
     symbol = data['symbol']
     direction = data['action'].upper() 
     quantity = str(round(float(data['size']), 3))
 
-    order_response = manage_order(exchange, order_id, symbol, direction, quantity)
+    order_response = manage_order(exchange, order_id, symbol, direction, quantity, is_admin)
 
     if order_response:
         return { "code": "success", "message": "Order executed" }
