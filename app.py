@@ -1,15 +1,14 @@
+import os
 import json
 from flask import Flask, request, render_template
 from binance.client import Client
 from binance.enums import *
+from dotenv import load_dotenv
 
-try:
-  config = json.load(open('config.json'))
-except Exception as e:
-  print(e)
+load_dotenv()
 
 app = Flask(__name__)
-admin_client = Client(config['admin']['api_key'], config['admin']['api_secret'], testnet=True)
+admin_client = Client(os.getenv("ADMIN_API_KEY"), os.getenv("ADMIN_API_SECRET"), testnet=True)
 
 def manage_order(exchange, order_id, symbol, direction, quantity, is_admin):
     try:
@@ -38,9 +37,11 @@ def webhook():
     data = json.loads(request.data)
     is_admin = True
     
-    if config['admin']['token'] != data['token']:
+    if os.getenv("ADMIN_TOKEN") != data['token']:
         is_admin = False
-        user = [x for x in config['users'] if x['token'] == data['token']]
+        # TODO: retrieve users from DB 
+        # user = [x for x in config['users'] if x['token'] == data['token']]
+        user = []
         if len(user) < 1:
             return { "code": "error", "message": "Invalid token" }
         user = user[0]
