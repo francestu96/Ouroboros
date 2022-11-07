@@ -5,7 +5,7 @@ Connect your [TradingView](https://www.tradingview.com/) strategies to your favo
 Are you wondering how to apply your strategies to place **real-time orders** with PineScript?\
 This project borns from a personal need and it's here to help you doing this without having any programming skills. Configuration take less then **5 minutes**!
 
-Visit [https://ouroboros-0.herokuapp.com/](https://ouroboros-0.herokuapp.com/)
+Visit [https://https://ouroboros-francestu96.vercel.app/](https://https://ouroboros-francestu96.vercel.app/)
 
 ## Prerequisites
 
