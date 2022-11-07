@@ -4,11 +4,14 @@ from flask import Flask, request, render_template
 from binance.client import Client
 from binance.enums import *
 from dotenv import load_dotenv
+from pymongo import MongoClient
 
 load_dotenv()
 
 app = Flask(__name__)
 admin_client = Client(os.getenv("ADMIN_API_KEY"), os.getenv("ADMIN_API_SECRET"), testnet=True)
+mongodb_client = MongoClient(os.getenv("MONGODB_URI"))
+database = mongodb_client[os.getenv("DB_NAME")]
 
 def manage_order(exchange, order_id, symbol, direction, quantity, is_admin):
     try:
@@ -38,15 +41,13 @@ def webhook():
     is_admin = True
     
     if os.getenv("ADMIN_TOKEN") != data['token']:
-        is_admin = False
-        # TODO: retrieve users from DB 
-        # user = [x for x in config['users'] if x['token'] == data['token']]
-        user = []
-        if len(user) < 1:
-            return { "code": "error", "message": "Invalid token" }
-        user = user[0]
+        is_admin = False        
+        user = database["users"].find_one({"token": data["token"]})
+        
+        if(not user):
+          return { "code": "error", "message": "Invalid token" }
 
-        exchange = [x for x in user['exchanges'] if x['name'] == data['exchange'].lower()]
+        exchange = [x for x in user['Exchanges'] if x['name'] == data['exchange'].lower()]
         if len(exchange) < 1:
             return { "code": "error", "message": "Exchange not valid" }
         exchange = exchange[0]
