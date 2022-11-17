@@ -11,7 +11,7 @@ load_dotenv()
 app = Flask(__name__)
 admin_client = Client(os.getenv("ADMIN_API_KEY"), os.getenv("ADMIN_API_SECRET"), testnet=True)
 mongodb_client = MongoClient(os.getenv("MONGODB_URI"))
-database = mongodb_client[os.getenv("DB_NAME")]
+database = mongodb_client.get_database()
 
 def manage_order(exchange, order_id, symbol, direction, quantity, is_admin):
     try:
