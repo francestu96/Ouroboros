@@ -21,7 +21,7 @@ const Header = () => {
               <NavItem key={`link-${link.label}`} {...link} />
             ))}
           </HStack>
-          <HStack alignItems="end" gap={'10px'}>
+          <HStack alignItems="center" gap={'10px'}>
             {session ? (
               <>
                 <Popover trigger={'hover'} placement={'bottom-end'}>
@@ -56,7 +56,7 @@ const Header = () => {
                 </Popover>
               </>
               ) : (
-              <Button size="sm" onClick={() => signIn()}  backgroundColor={colorMode === "dark" ? "#90cdf4" : "#3182ce"}>Sign In</Button> 
+              <Button size="sm" onClick={() => signIn()}  backgroundColor="#DA3F5E">Sign In</Button> 
             )}
             <ColorModeButton />
           </HStack>

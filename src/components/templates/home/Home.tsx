@@ -1,5 +1,5 @@
-import { Box, Link, Spinner, Td, useColorMode } from '@chakra-ui/react';
-import { Table, Thead, Tbody, Tr, Th, TableContainer, Heading } from '@chakra-ui/react'
+import { Box, Button, Flex, Link, Spinner, Stack, Td, useBreakpointValue, useColorMode } from '@chakra-ui/react';
+import { Image, Text, Heading } from '@chakra-ui/react'
 import { useState } from 'react';
 
 const Home = () => {
@@ -7,57 +7,34 @@ const Home = () => {
   const { colorMode } = useColorMode();
 
   return (
-    <Box>
-      <Heading size="md" textAlign="center" marginBottom={6}>
-        Last Transactions
-      </Heading>
-      <TableContainer borderWidth='2px' borderRadius='lg' pl={4} pr={4}>
-        {
-          transactions && transactions.length > 0 
-          ?
-          <Table variant='simple'>
-            <Thead>
-              <Tr>
-                <Th>Trx Hash</Th>
-                <Th>Block</Th>
-                <Th>From</Th>
-                <Th>To</Th>
-                <Th>Value</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {              
-                transactions?.map((trx: any) => (
-                  <Tr key={trx.hash}>
-                    <Td>
-                      <Link href={"https://bscscan.com/tx/" + trx.hash} color={colorMode === "dark" ? "#90cdf4" : "#3182ce"} isExternal>
-                        {trx.hash.slice(0, 20) + "..."}
-                      </Link>
-                    </Td>
-                    <Td>{trx.block}</Td>
-                    <Td>
-                      <Link href={"https://bscscan.com/address/" + trx.from} color={colorMode === "dark" ? "#90cdf4" : "#3182ce"} isExternal>
-                        {trx.from.slice(0, 20) + "..."}
-                      </Link>
-                    </Td>
-                    <Td>
-                      <Link href={"https://bscscan.com/address/" + trx.from} color={colorMode === "dark" ? "#90cdf4" : "#3182ce"} isExternal>
-                        {trx.to.slice(0, 20) + "..."}
-                      </Link>
-                    </Td>
-                    <Td>{trx.value} BTCB</Td>
-                  </Tr>
-                ))
-              }
-            </Tbody>
-          </Table>
-          : 
-          <Box textAlign="center" p="5">
-            <Spinner size='xl' color={colorMode === "dark" ? "#90cdf4" : "#3182ce"}/>
-          </Box>
-        }
-      </TableContainer>
-    </Box>
+    <Stack minH={'10vh'} direction={{ base: 'column', md: 'row' }}>
+      <Flex p={8} flex={1} align={'center'} justify={'center'}>
+        <Stack spacing={6} w={'full'} maxW={'lg'}>
+          <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
+            <Text color={'#DA3F5E'} as={'span'}>
+              Ouroboros
+            </Text>{' '}
+            <br />{' '}
+            <Text as={'span'} position={'relative'} _after={{ content: "''", width: 'full', height: useBreakpointValue({ base: '20%', md: '30%' }), position: 'absolute', bottom: 1, left: 0, bg: '#DA3F5E', zIndex: -1 }}>
+              TradingView to DEX
+            </Text>
+          </Heading>
+          <Text fontSize={{ base: 'md', lg: 'lg' }} color={'gray.500'}>
+            The project board is an exclusive resource for contract work. It's
+            perfect for freelancers, agencies, and moonlighters.
+          </Text>
+          <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+            <Button rounded={'full'} bg={'#DA3F5E'} color={'white'} _hover={{  bg: '#DA3F5E' }}>
+              Create Project
+            </Button>
+            <Button rounded={'full'}>How It Works</Button>
+          </Stack>
+        </Stack>
+      </Flex>
+      <Flex flex={1}>
+        <Image alt={'Ouroboros logo'}  src="/logo.png" />
+      </Flex>
+    </Stack>
   );
 };
 
