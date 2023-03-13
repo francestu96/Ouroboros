@@ -1,7 +1,7 @@
 import { ChevronDownIcon, ChevronRightIcon, CloseIcon, HamburgerIcon, Icon } from '@chakra-ui/icons';
 import { Box, Flex, HStack, IconButton, useColorModeValue, useColorMode, VStack, useDisclosure, Text, Slide, Button, Popover, PopoverTrigger, PopoverContent, Stack, Link, Center } from '@chakra-ui/react';
 import { ColorModeButton, Logo, NavItem } from 'components/elements';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSession, signIn, signOut } from "next-auth/react";
 import NextLink from 'next/link';
 import NAV_LINKS from './paths';

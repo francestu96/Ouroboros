@@ -1,6 +1,5 @@
-import { LinkBox, LinkOverlay, useColorMode } from '@chakra-ui/react';
+import { LinkBox, LinkOverlay } from '@chakra-ui/react';
 import Image from 'next/image';
-import Link from 'next/link';
 
 const Logo = () => {
   return (
