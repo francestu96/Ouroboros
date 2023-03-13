@@ -68,7 +68,7 @@ export default function Footer() {
           <Stack spacing={6}>
             <HStack>
               <Logo/>
-              <Text pt={'10px'} fontWeight='bold' fontSize={{ base: 'md', md: 'lg', lg: 'xl' }} color={'#DA3F5E'}>Ouroboros</Text>
+              <Text pt={'10px'} fontWeight='bold' fontSize={{ base: 'md', md: 'lg', lg: 'xl' }} color='main'>Ouroboros</Text>
             </HStack>
             <Text fontSize={'sm'}>
               © 2022 Chakra Templates. All rights reserved
@@ -113,7 +113,7 @@ export default function Footer() {
                 }}
               />
               <IconButton
-                bg='#DA3F5E'
+                bg='main'
                 aria-label="Subscribe"
                 icon={<BiMailSend />}
               />

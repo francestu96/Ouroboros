@@ -8,7 +8,7 @@ import "../styles/globals.css";
 
 const config = {
   initialColorMode: 'dark',
-  useSystemColorMode: false
+  useSystemColorMode: false,
 };
 
 const styles = {
@@ -16,13 +16,17 @@ const styles = {
     body: {
       bg: mode(
         props.theme.semanticTokens.colors['chakra-body-bg']._light,
-        '#2F3849',
+        'gray.700',
       )(props),
     },
   })
 };
 
-const theme = extendTheme({ config, styles });
+const colors = {
+  main: "#DA3F5E"
+}
+
+const theme = extendTheme({ config, styles, colors });
 
 const Ouroboros = ({Component, pageProps}: AppProps<{session: Session}>) => {
   return (

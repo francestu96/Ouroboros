@@ -7,10 +7,10 @@ const Hero = () => {
       <Flex p={8} flex={1} align={'center'} justify={'center'}>
         <Stack spacing={6} w={'full'} maxW={'lg'}>
           <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
-            <Text color={'#DA3F5E'} as={'span'}>
+            <Text color='main' as={'span'}>
               Ouroboros
             </Text>{' '}
-            <Text as={'span'} position={'relative'} _after={{ content: "''", width: 'full', height: useBreakpointValue({ base: '20%', md: '30%' }), position: 'absolute', bottom: 1, left: 0, bg: '#DA3F5E', zIndex: -1 }}>
+            <Text as={'span'} position={'relative'} _after={{ content: "''", width: 'full', height: useBreakpointValue({ base: '20%', md: '30%' }), position: 'absolute', bottom: 1, left: 0, bg: 'main', zIndex: -1 }}>
               TradingView to DEX
             </Text>
           </Heading>
@@ -19,7 +19,7 @@ const Hero = () => {
             perfect for freelancers, agencies, and moonlighters.
           </Text>
           <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-            <Button rounded={'full'} bg={'#DA3F5E'} color={'white'} _hover={{  bg: '#DA3F5E' }}>
+            <Button rounded={'full'} bg='main' color={'white'} _hover={{  bg: 'main' }}>
               Create Project
             </Button>
             <Button rounded={'full'}>How It Works</Button>
