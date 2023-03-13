@@ -1,10 +1,10 @@
+import { Home } from 'components/templates';
 import { Default } from 'components/templates/Default';
-import { Home } from 'components/templates/home';
 import { NextPage } from 'next';
 
 const HomePage: NextPage = () => {
   return (
-    <Default pageName="Home">
+    <Default pageName="Ouroboros | Home">
       <Home/>
     </Default>
   );

@@ -23,7 +23,8 @@ const styles = {
 };
 
 const colors = {
-  main: "#DA3F5E"
+  main: "#DA3F5E",
+  input: "#975F6A"
 }
 
 const theme = extendTheme({ config, styles, colors });
