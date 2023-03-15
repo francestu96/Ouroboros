@@ -4,7 +4,7 @@ import { Image, Text } from '@chakra-ui/react'
 const HowItWorks = () => {
   return (
     <>
-      <Center mb='6' color='main' as={'span'} fontSize={{ base: 'xl', md: '2xl', lg: '3xl' }} textAlign='center' fontWeight='bold' mt='12'>How It Works</Center>
+      <Center mb='6' color='main' as={'span'} fontSize={{ base: 'xl', md: '2xl', lg: '3xl' }} textAlign='center' fontWeight='bold' mt='12' borderTop='1px' borderTopColor="chakra-border-color" borderRadius='xl'>How It Works</Center>
       <Stack bg={useColorModeValue('#2F3849', 'white')} mt='6' pt='6' rounded='lg'>
         <Flex justify="space-between" p='6'>
           <Box p={6} maxW={'330px'} w={'full'} bg={useColorModeValue('white', '#2F3849')} boxShadow={'2xl'} rounded={'lg'} pos={'relative'} zIndex={1}>

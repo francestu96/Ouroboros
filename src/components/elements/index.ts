@@ -4,6 +4,7 @@ export * from './Logo';
 export * from './Header';
 export * from './Hero';
 export * from './HowItWorks';
+export * from './WhyDex';
 export * from './SupportedChains';
 export * from './Testimonials';
 export * from './Faq';
