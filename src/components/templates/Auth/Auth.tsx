@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { Box, Button, Flex, FormControl, FormLabel, Heading, Input, Tooltip, useColorMode, useToast } from '@chakra-ui/react';
+import { Box, Button, Flex, FormControl, FormLabel, Heading, Input, useToast } from '@chakra-ui/react';
 import { Text } from '@chakra-ui/react'
-import { InfoIcon } from '@chakra-ui/icons';
 import axios from 'axios';
 import { Formik, Form, Field } from 'formik';
 import { NextPage } from 'next';
@@ -28,7 +27,7 @@ const Divider = ({ word }: IDivicerProps) => {
   );
 };
 
-const Auth: NextPage = () => {
+const Auth: NextPage = ({ providers }: any) => {
   const toast = useToast();
   const [authType, setAuthType] = useState("Login");
   const oppAuthType: { [key: string]: string } = {
@@ -38,6 +37,29 @@ const Auth: NextPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const ProvidersButtons = ({ providers }: any) => (
+    <Flex direction="column" w="100%">
+      {Object.values(providers).map(
+        (provider: any) =>
+          provider.name !== "Credentials" && (
+            <Button
+              key={provider.name}
+              mb={4}
+              bg='input'
+              type="submit"
+              onClick={() => {
+                signIn(provider.id, {
+                  callbackUrl: '/',
+                });
+              }}
+            >
+              <Box>Sign in with {provider.name}</Box>
+            </Button>
+          )
+      )}
+    </Flex>
+  );
 
   const redirectToHome = () => {
     const { pathname } = Router;
@@ -86,6 +108,8 @@ const Auth: NextPage = () => {
         </Text>
 
         <Divider />
+
+        <ProvidersButtons providers={providers} />
 
         <Divider word="Or" />
 

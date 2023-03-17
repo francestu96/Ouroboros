@@ -12,6 +12,8 @@ declare module "next-auth" {
     name: string;
     password: string;
     email: string;
+    apollox_key: string;
+    apollox_secret: string;
   }
 }
 

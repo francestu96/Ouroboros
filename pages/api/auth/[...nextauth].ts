@@ -1,4 +1,6 @@
 import NextAuth from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
+import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "../../../src/utils/mongodb";
@@ -7,12 +9,20 @@ import User from "../../../src/model/User";
 
 export default NextAuth({
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID || "",
+      clientSecret: process.env.GOOGLE_SECRET || "",
+     }),
+     GithubProvider({
+      clientId: process.env.GITHUB_ID || "",
+      clientSecret: process.env.GITHUB_SECRET || "",
+    }),
     CredentialsProvider({
       id: "credentials",
       name: "Credentials",
       credentials: {
-        telegramId: {
-          label: "Id",
+        email: {
+          label: "email",
           type: "text",
         },
         password: {
@@ -25,20 +35,20 @@ export default NextAuth({
         await dbConnect();
 
         const user = await User.findOne({
-          telegramId: credentials?.telegramId,
+          email: credentials?.email,
         });
 
         if (!user) {
-          throw new Error("Telegram ID is not registered");
+          throw new Error("Email is not registered");
         }
 
-        if (credentials!.password !== user.password) {
+        if (!user.comparePassword(credentials!.password)) {
           throw new Error("Password is incorrect");
         }
 
         return user;
       },
-    }),
+    })
   ],
   pages: {
     signIn: "/auth",
@@ -56,9 +66,7 @@ export default NextAuth({
     async jwt({ token, user }) {
       if (user) {
         token.name = user.name;
-        token.telegramId = user.telegramId;
         token.email = user.email;
-        token.phone = user.phone;
       }
 
       return token;
@@ -66,9 +74,7 @@ export default NextAuth({
     async session({ session, token }) {
       if (token) {
         session.user.name = token.name;
-        session.user.telegramId = token.telegramId;
         session.user.email = token.email;
-        session.user.phone = token.phone;
       }
       return session;
     }

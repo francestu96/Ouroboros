@@ -7,24 +7,16 @@ interface ResponseData {
   msg?: string;
 }
 
-const validateTelegramId = (telegramId: string): boolean => {
-  const regEx = /(?=.{5,64}(?:\s|$))(?![_])(?!.*[_]{2})[a-zA-Z0-9_]+(?<![_.])/i;
-  return regEx.test(telegramId);
-};
-
-const validateForm = async (name: string, telegramId: string, password: string) => {
+const validateForm = async (name: string, email: string, password: string) => {
   if (name.length < 3) {
     return { error: "Name must have 3 or more characters" };
   }
-  if (!validateTelegramId(telegramId)) {
-    return { error: "Telegram ID is invalid" };
-  }
 
   await dbConnect();
-  const telegramIdUser = await User.findOne({ telegramId: telegramId });
+  const emailUser = await User.findOne({ email: email });
 
-  if (telegramIdUser) {
-    return { error: "Telegram ID already exists" };
+  if (emailUser) {
+    return { error: "Email already registered" };
   }
 
   if (password.length < 8) {
@@ -41,14 +33,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       .json({ error: "This API call only accepts POST methods" });
   }
 
-  const { name, telegramId, password } = req.body;
+  const { name, email, password } = req.body;
 
-  const errorMessage = await validateForm(name, telegramId, password);
+  const errorMessage = await validateForm(name, email, password);
   if (errorMessage) {
     return res.status(400).json(errorMessage as ResponseData);
   }
 
-  const newUser = new User({ name, telegramId, password });
+  const newUser = new User({ name, email, password });
 
   newUser.save().then(() =>
       res.status(200).json({ msg: "Successfuly created new User: " + newUser })
