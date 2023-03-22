@@ -8,7 +8,7 @@ const Logo = () => {
           <Image
             src='/logo.png'
             height={55}
-            width={45}
+            width={55}
             alt="Ouroboros logo"
           />
       </LinkOverlay>

@@ -4,7 +4,6 @@ import { extendTheme } from '@chakra-ui/react';
 import type { AppProps } from 'next/app';
 import { Session } from 'next-auth';
 import { mode } from '@chakra-ui/theme-tools';
-import "../styles/globals.css";
 
 const config = {
   initialColorMode: 'dark',

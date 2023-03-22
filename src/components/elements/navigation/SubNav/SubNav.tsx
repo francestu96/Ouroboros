@@ -19,13 +19,13 @@ const SubNav = ({ label, href, subLabel, logo }: ISubNav) => {
       display={'block'}
       p={2}
       rounded={'md'}
-      _hover={{ bg: useColorModeValue('green.50', 'gray.900') }}
+      _hover={{ bg: useColorModeValue('pink.100', 'gray.900') }}
     >
       
       <Stack direction={'row'} align={'center'}>
         <Image src={logo} width={46} height={46} id={`${label}-navitem`} />
         <Box>
-          <Text transition={'all .3s ease'} _groupHover={{ color: 'green.400' }} fontWeight={500}>
+          <Text transition={'all .3s ease'} _groupHover={{ color: 'main' }} fontWeight={500}>
             {label}
           </Text>
           <Text fontSize={'sm'}>{subLabel}</Text>
@@ -39,7 +39,7 @@ const SubNav = ({ label, href, subLabel, logo }: ISubNav) => {
           align={'center'}
           flex={1}
         >
-          <Icon color={'green.400'} w={5} h={5} as={ChevronRightIcon} />
+          <Icon color={'main'} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
     </Link>

@@ -4,7 +4,7 @@ import { Text } from '@chakra-ui/react'
 const Faq = () => {
   return (
     <>
-      <Text mb='6' color='main' fontSize={{ base: 'xl', md: '2xl', lg: '3xl' }} align='center' fontWeight='bold' mt='12'>Frequently Asked Questions</Text>
+      <Text id='faq' mb='6' color='main' fontSize={{ base: 'xl', md: '2xl', lg: '3xl' }} align='center' fontWeight='bold' mt='12'>Frequently Asked Questions</Text>
       <Accordion>
         <AccordionItem>
             <AccordionButton>

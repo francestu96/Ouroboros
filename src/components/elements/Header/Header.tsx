@@ -14,115 +14,115 @@ const Header = () => {
 
   return (
     <Box borderBottom="1px" borderBottomColor="chakra-border-color" p='10px 20%'>
-        <Flex justify="space-between" display={['none', 'none', 'none','flex']}>
-          <Logo />
-          <HStack gap={'15px'} alignItems="center">
+      <Flex justify="space-between" display={['none', 'none', 'none','flex']}>
+        <Logo />
+        <HStack gap={'15px'} alignItems="center">
+          {NAV_LINKS.map((link) => (
+            <NavItem key={`link-${link.label}`} {...link} />
+          ))}
+        </HStack>
+        <HStack alignItems="center" gap={'10px'}>
+          {session ? (
+            <>
+              <Popover trigger={'hover'} placement={'bottom-end'}>
+                <PopoverTrigger>
+                  <HStack cursor="pointer">
+                    <Box mr={-5}>
+                      <Text fontSize="md" ml="-6em">Welcome <br></br>
+                        <Text as="span" color="main" fontWeight="bold">{session?.user?.name}
+                        </Text>
+                      </Text>
+                    </Box>
+                    <ChevronDownIcon/>
+                  </HStack>
+                </PopoverTrigger>
+                <PopoverContent border={0} boxShadow={'xl'} p={4} rounded={'xl'} w={'15em'}>
+                    <NextLink href="myprofile">
+                      <Link role={'group'} display={'block'} p={2} rounded={'md'} _hover={{ bg: linkColor}}>                        
+                        <Stack direction={'row'} align={'center'}>
+                          <Box>
+                            <Text transition={'all .3s ease'} _groupHover={{ color: 'main' }} fontWeight={500}>
+                              My Profile
+                            </Text>
+                          </Box>
+                          <Flex transition={'all .3s ease'} transform={'translateX(-10px)'} opacity={0} _groupHover={{ opacity: '100%', transform: 'translateX(0)' }} justify={'flex-end'} align={'center'} flex={1}>
+                            <Icon color={'main'} w={5} h={5} as={ChevronRightIcon} />
+                          </Flex>
+                        </Stack>
+                      </Link>
+                    </NextLink>
+                    <Button size="sm" onClick={() => signOut()}  backgroundColor="main">Sign Out</Button> 
+                </PopoverContent>
+              </Popover>
+            </>
+            ) : (
+            <Button size="sm" onClick={() => signIn()}  backgroundColor="main">Sign In</Button> 
+          )}
+          <ColorModeButton />
+        </HStack>
+      </Flex>
+      <Flex align="center" justify="space-between" display={['flex', 'flex', 'flex','none']}>
+        <Logo />
+        <IconButton aria-label="Open Menu" size="lg" mr={2} icon={<HamburgerIcon/>} onClick={onToggle}/>
+      </Flex> 
+
+
+      <Slide in={isOpen} transition={{"enter": {duration: 0.5}, "exit": {duration: 0.5}}} style={{ zIndex: 10 }}>
+        <Flex w='100vw' bgColor={useColorModeValue('white', 'gray.800')} h="100vh" flexDir="column">
+          <Flex justify="flex-end">
+          <IconButton mt={2} mr={2} aria-label="Open Menu" size="lg" icon={<CloseIcon/>}onClick={onToggle}/>
+        </Flex>
+          <VStack gap={'15px'}>
+              {session ? (
+                <Box mb="2">
+                  <HStack gap={'10px'}>
+                    <ColorModeButton />
+                  </HStack>
+                  <Center mt="1">
+                    <Popover trigger={'hover'} placement={'bottom-start'}>
+                      <PopoverTrigger>
+                        <HStack cursor="pointer">
+                          <Text fontSize="xl">Welcome <br></br>
+                            <Text as="span" color="rgb(112, 59 , 235)">{session?.user?.name}
+                            </Text>
+                          </Text>
+                          <ChevronDownIcon/>
+                        </HStack>
+                      </PopoverTrigger>
+                      <PopoverContent border={0} boxShadow={'xl'} p={4} rounded={'xl'} w={'15em'}>
+                          <NextLink href="myprofile">
+                            <Link role={'group'} display={'block'} p={2} rounded={'md'} _hover={{ bg: linkColor }}>                        
+                              <Stack direction={'row'} align={'center'}>
+                                <Box>
+                                  <Text transition={'all .3s ease'} _groupHover={{ color: 'main' }} fontWeight={500}>
+                                    My Profile
+                                  </Text>
+                                </Box>
+                                <Flex transition={'all .3s ease'} transform={'translateX(-10px)'} opacity={0} _groupHover={{ opacity: '100%', transform: 'translateX(0)' }} justify={'flex-end'} align={'center'} flex={1}>
+                                  <Icon color={'main'} w={5} h={5} as={ChevronRightIcon} />
+                                </Flex>
+                              </Stack>
+                            </Link>
+                          </NextLink>
+                          <Button size="sm" onClick={() => signOut()}  backgroundColor={colorMode === "dark" ? "#90cdf4" : "#3182ce"}>Sign Out</Button>
+                      </PopoverContent>
+                    </Popover>
+                  </Center>
+                </Box>
+                ) : (
+                <>
+                  <HStack gap={'10px'}>
+                    <Button size="lg" onClick={() => signIn()}  backgroundColor={colorMode === "dark" ? "#90cdf4" : "#3182ce"}>Sign In</Button> 
+                    <ColorModeButton />
+                  </HStack>
+                </>
+              )}
             {NAV_LINKS.map((link) => (
               <NavItem key={`link-${link.label}`} {...link} />
             ))}
-          </HStack>
-          <HStack alignItems="center" gap={'10px'}>
-            {session ? (
-              <>
-                <Popover trigger={'hover'} placement={'bottom-end'}>
-                  <PopoverTrigger>
-                    <HStack cursor="pointer">
-                      <Box mr={-5}>
-                        <Text fontSize="xl" ml="-6em">Welcome <br></br>
-                          <Text as="span" color="rgb(112, 59 , 235)">{session?.user?.name}
-                          </Text>
-                        </Text>
-                      </Box>
-                      <ChevronDownIcon/>
-                    </HStack>
-                  </PopoverTrigger>
-                  <PopoverContent border={0} boxShadow={'xl'} p={4} rounded={'xl'} w={'15em'}>
-                      <NextLink href="myprofile">
-                        <Link role={'group'} display={'block'} p={2} rounded={'md'} _hover={{ bg: linkColor}}>                        
-                          <Stack direction={'row'} align={'center'}>
-                            <Box>
-                              <Text transition={'all .3s ease'} _groupHover={{ color: 'green.400' }} fontWeight={500}>
-                                My Profile
-                              </Text>
-                            </Box>
-                            <Flex transition={'all .3s ease'} transform={'translateX(-10px)'} opacity={0} _groupHover={{ opacity: '100%', transform: 'translateX(0)' }} justify={'flex-end'} align={'center'} flex={1}>
-                              <Icon color={'green.400'} w={5} h={5} as={ChevronRightIcon} />
-                            </Flex>
-                          </Stack>
-                        </Link>
-                      </NextLink>
-                      <Button size="sm" onClick={() => signOut()}  backgroundColor={colorMode === "dark" ? "#90cdf4" : "#3182ce"}>Sign Out</Button> 
-                  </PopoverContent>
-                </Popover>
-              </>
-              ) : (
-              <Button size="sm" onClick={() => signIn()}  backgroundColor="#DA3F5E">Sign In</Button> 
-            )}
-            <ColorModeButton />
-          </HStack>
-        </Flex>
-        <Flex align="center" justify="space-between" display={['flex', 'flex', 'flex','none']}>
-          <Logo />
-          <IconButton aria-label="Open Menu" size="lg" mr={2} icon={<HamburgerIcon/>} onClick={onToggle}/>
-        </Flex> 
-
-
-        <Slide in={isOpen} transition={{"enter": {duration: 0.5}, "exit": {duration: 0.5}}} style={{ zIndex: 10 }}>
-          <Flex w='100vw' bgColor={useColorModeValue('white', 'gray.800')} h="100vh" flexDir="column">
-            <Flex justify="flex-end">
-            <IconButton mt={2} mr={2} aria-label="Open Menu" size="lg" icon={<CloseIcon/>}onClick={onToggle}/>
-          </Flex>
-            <VStack gap={'15px'}>
-                {session ? (
-                  <Box mb="2">
-                    <HStack gap={'10px'}>
-                      <ColorModeButton />
-                    </HStack>
-                    <Center mt="1">
-                      <Popover trigger={'hover'} placement={'bottom-start'}>
-                        <PopoverTrigger>
-                          <HStack cursor="pointer">
-                            <Text fontSize="xl">Welcome <br></br>
-                              <Text as="span" color="rgb(112, 59 , 235)">{session?.user?.name}
-                              </Text>
-                            </Text>
-                            <ChevronDownIcon/>
-                          </HStack>
-                        </PopoverTrigger>
-                        <PopoverContent border={0} boxShadow={'xl'} p={4} rounded={'xl'} w={'15em'}>
-                            <NextLink href="myprofile">
-                              <Link role={'group'} display={'block'} p={2} rounded={'md'} _hover={{ bg: linkColor }}>                        
-                                <Stack direction={'row'} align={'center'}>
-                                  <Box>
-                                    <Text transition={'all .3s ease'} _groupHover={{ color: 'green.400' }} fontWeight={500}>
-                                      My Profile
-                                    </Text>
-                                  </Box>
-                                  <Flex transition={'all .3s ease'} transform={'translateX(-10px)'} opacity={0} _groupHover={{ opacity: '100%', transform: 'translateX(0)' }} justify={'flex-end'} align={'center'} flex={1}>
-                                    <Icon color={'green.400'} w={5} h={5} as={ChevronRightIcon} />
-                                  </Flex>
-                                </Stack>
-                              </Link>
-                            </NextLink>
-                            <Button size="sm" onClick={() => signOut()}  backgroundColor={colorMode === "dark" ? "#90cdf4" : "#3182ce"}>Sign Out</Button>
-                        </PopoverContent>
-                      </Popover>
-                    </Center>
-                  </Box>
-                  ) : (
-                  <>
-                    <HStack gap={'10px'}>
-                      <Button size="lg" onClick={() => signIn()}  backgroundColor={colorMode === "dark" ? "#90cdf4" : "#3182ce"}>Sign In</Button> 
-                      <ColorModeButton />
-                    </HStack>
-                  </>
-                )}
-              {NAV_LINKS.map((link) => (
-                <NavItem key={`link-${link.label}`} {...link} />
-              ))}
-            </VStack>
-          </Flex>   
-        </Slide> 
+          </VStack>
+        </Flex>   
+      </Slide> 
     </Box>
   );
 };

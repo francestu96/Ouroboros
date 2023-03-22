@@ -1,18 +1,9 @@
 import {
-  Heading,
   Box,
   Button,
-  TableContainer,
-  Table,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
   FormControl,
   Input,
   useToast,
-  Link,
   useColorMode,
   FormLabel,
   Tooltip,
@@ -23,7 +14,9 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
-  useDisclosure
+  useDisclosure,
+  Image,
+  useColorModeValue
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { Error } from 'components/elements/Error';
@@ -62,109 +55,72 @@ const MyProfile = () => {
 
   return (
     <>
-      <Heading size="lg" marginBottom={6}>
-        Your Information
-      </Heading>
       { !session ? <Error msg={"<b>Sign In</b> to your account first"}/> :
-        <Box>
-          <Box borderWidth='2px' borderRadius='lg' p="1em" w={["100%", "75%", "50%"]}>
-            <Formik initialValues={{}} validateOnChange={false} validateOnBlur={false} onSubmit={(_, actions) => {checkAlert(actions);}}>
-              {(props) => (
-                <Form style={{ width: "100%" }}>
-                  <Box display="flex" flexDirection="column" w="100%" mb={4}>
-                    <Field name="telegramId">
-                      {() => (
-                        <FormControl isRequired mb={6}>
-                          <FormLabel htmlFor="telegramId">Telegram ID:</FormLabel>
-                          <Tooltip label="Telegram ID cannot be changed" fontSize='sm' placement='top' hasArrow>
-                            <Input value={session.user?.telegramId || ""} readOnly placeholder="Telegram ID" background={colorMode === "dark" ? "rgba(49, 130, 206, 0.4)" : "#90cdf4"}/>
-                          </Tooltip>
-                        </FormControl>
-                      )}
-                    </Field>
-                    <Field name="username">
-                      {() => (
-                        <FormControl isRequired mb={6}>
-                          <FormLabel htmlFor="username">Name:</FormLabel>
-                          <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Your displayed Name" background={colorMode === "dark" ? "rgba(49, 130, 206, 0.4)" : "#90cdf4"}/>
-                        </FormControl>
-                      )}
-                    </Field>
-                    <Field name="email">
-                      {() => (
-                        <FormControl mb={6}>
-                          <FormLabel htmlFor="email">Email:</FormLabel>
-                          <Input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="No email set" background={colorMode === "dark" ? "rgba(49, 130, 206, 0.4)" : "#90cdf4"}/>
-                        </FormControl>
-                      )}
-                    </Field>
-                    <Field name="phone">
-                      {() => (
-                        <FormControl mb={6}>
-                          <FormLabel htmlFor="phone">Phone number:</FormLabel>
-                          <Input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="No phone number set" background={colorMode === "dark" ? "rgba(49, 130, 206, 0.4)" : "#90cdf4"}/>
-                        </FormControl>
-                      )}
-                    </Field>
-                    <Button mt={6} bg={colorMode === "dark" ? "#90cdf4" : "#3182ce"} isLoading={props.isSubmitting} type="submit">
-                      Update Information
-                    </Button>
-                    <AlertDialog motionPreset='slideInBottom' leastDestructiveRef={cancelRef} onClose={onClose} isOpen={isOpen} isCentered>
-                      <AlertDialogOverlay/>
-                      <AlertDialogContent>
-                        <AlertDialogHeader>Update Information?</AlertDialogHeader>
-                        <AlertDialogCloseButton />
-                        <AlertDialogBody>For updating your information you need to Sign Out.<br></br>Do you want to continue?</AlertDialogBody>
-                        <AlertDialogFooter>
-                          <Button ref={cancelRef} onClick={onClose}>
-                            No
-                          </Button>
-                          <Button colorScheme='red' ml={3} onClick={formSubmit}>
-                            Yes
-                          </Button>
-                        </AlertDialogFooter>
-                      </AlertDialogContent>
-                    </AlertDialog>
-                  </Box>
-                </Form>
-              )}
-            </Formik>
+        <Box bgColor={useColorModeValue('gray.700', 'white')} borderRadius='lg' boxShadow='20px 20px 50px -20px' p="3em" m='auto' mt='10' w={["100%", "75%", "50%"]}>
+          <Box mt='-8em' height={'8em'}>
+            <Image m='auto' h='150' src={useColorModeValue('logo-hero-dark.png', 'logo-hero-light.png')}  borderRadius='50%'/>
           </Box>
-
-          <Heading size="mg" mt={6} mb={4}>
-            Deposit History
-          </Heading>
-          <TableContainer borderWidth='2px' borderRadius='lg' pl={4} pr={4}>
-            <Table variant='simple'>
-              <Thead>
-                <Tr>
-                  <Th>Date</Th>
-                  <Th>Tx Hash</Th>
-                  <Th>Value</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                <Tr>
-                  <Td>Yesterday at 16:46:12 UTC</Td>
-                  <Td>
-                    <Link href={"https://bscscan.com/tx/0x2e25cdac741a092f1fab3304d2dbdcf3d6d30e0406cd4b10dafe261c225d3be2"} color={colorMode === "dark" ? "#90cdf4" : "#3182ce"} isExternal>
-                      0x2e25cdac741a092f1fab3304d2dbdcf3d6d30e0406cd4b10dafe261c225d3be2
-                    </Link>
-                  </Td>
-                  <Td>2.12 BTCB</Td>
-                </Tr>
-                <Tr>
-                  <Td>2022/09/28 09:23:17 UTC</Td>
-                  <Td>
-                    <Link href={"https://bscscan.com/tx/0x355de1bff433fb4f43a389dec80ef0ee80b53ce9a233f98754627a63fee4d402"} color={colorMode === "dark" ? "#90cdf4" : "#3182ce"} isExternal>
-                      0x355de1bff433fb4f43a389dec80ef0ee80b53ce9a233f98754627a63fee4d402
-                    </Link>
-                  </Td>
-                  <Td>0.05 BTCB</Td>
-                </Tr>
-              </Tbody>
-            </Table>
-          </TableContainer>
+          <Formik initialValues={{}} validateOnChange={false} validateOnBlur={false} onSubmit={(_, actions) => {checkAlert(actions);}}>
+            {(props) => (
+              <Form style={{ width: "100%" }}>
+                <Box display="flex" flexDirection="column" w="100%" mb={4}>
+                  <Field name="telegramId">
+                    {() => (
+                      <FormControl isRequired mb={6}>
+                        <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="telegramId">Telegram ID:</FormLabel>
+                        <Tooltip label="Telegram ID cannot be changed" fontSize='sm' placement='top' hasArrow>
+                          <Input value={session.user?.telegramId || ""} readOnly textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="Telegram ID"/>
+                        </Tooltip>
+                      </FormControl>
+                    )}
+                  </Field>
+                  <Field name="username">
+                    {() => (
+                      <FormControl isRequired mb={6}>
+                        <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="username">Name:</FormLabel>
+                        <Input value={name} onChange={(e) => setName(e.target.value)} textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="Your displayed Name"/>
+                      </FormControl>
+                    )}
+                  </Field>
+                  <Field name="email">
+                    {() => (
+                      <FormControl mb={6}>
+                        <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="email">Email:</FormLabel>
+                        <Input value={email} onChange={(e) => setEmail(e.target.value)} textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="No email set"/>
+                      </FormControl>
+                    )}
+                  </Field>
+                  <Field name="phone">
+                    {() => (
+                      <FormControl mb={6}>
+                        <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="phone">Phone number:</FormLabel>
+                        <Input value={phone} onChange={(e) => setPhone(e.target.value)} textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="No phone number set" focusBorderColor='input'/>
+                      </FormControl>
+                    )}
+                  </Field>
+                  <Button mt={6} bg='main' textColor='black' isLoading={props.isSubmitting} type="submit">
+                    Update Information
+                  </Button>
+                  <AlertDialog motionPreset='slideInBottom' leastDestructiveRef={cancelRef} onClose={onClose} isOpen={isOpen} isCentered>
+                    <AlertDialogOverlay/>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>Update Information?</AlertDialogHeader>
+                      <AlertDialogCloseButton />
+                      <AlertDialogBody>For updating your information you need to Sign Out.<br></br>Do you want to continue?</AlertDialogBody>
+                      <AlertDialogFooter>
+                        <Button ref={cancelRef} onClick={onClose}>
+                          No
+                        </Button>
+                        <Button colorScheme='red' ml={3} onClick={formSubmit}>
+                          Yes
+                        </Button>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </Box>
+              </Form>
+            )}
+          </Formik>
         </Box>
       }
     </>

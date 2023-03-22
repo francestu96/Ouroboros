@@ -2,8 +2,8 @@ import { ISubNav } from "components/elements/navigation/SubNav/SubNav";
 
 const NAV_LINKS: ISubNav[] = [
   { label: 'Home', href: '/' },
-  { label: 'Withdrawals', href: '/withdrawals' },
-  { label: 'Documentation', src: 'https://docs.protonchain.com/introduction/overview.html' },
+  { label: 'Documentation', href: '/documentation' },
+  { label: 'F.A.Q.', href: '/#faq' },
   {
     label: 'Community',
     href: '#',
