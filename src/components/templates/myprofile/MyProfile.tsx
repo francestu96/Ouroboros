@@ -4,49 +4,53 @@ import {
   FormControl,
   Input,
   useToast,
-  useColorMode,
   FormLabel,
-  Tooltip,
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogCloseButton,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  useDisclosure,
   Image,
-  useColorModeValue
+  useColorModeValue,
+  useColorMode
 } from '@chakra-ui/react';
 import axios from 'axios';
-import { Error } from 'components/elements/Error';
 import { Formik, Form, Field } from 'formik';
-import { signOut, useSession } from 'next-auth/react';
-import { useRef } from 'react';
-import { useState } from 'react';
+import { signIn, useSession } from 'next-auth/react';
+import { useEffect, useState } from 'react';
 
 const MyProfile = () => {
   const { data: session } = useSession();
   const toast = useToast();
-  const { colorMode } = useColorMode();
+  const { colorMode, toggleColorMode } = useColorMode();
   const [name, setName] = useState(session?.user.name);
   const [email, setEmail] = useState(session?.user.email);
-  const [phone, setPhone] = useState(session?.user.phone);
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const cancelRef = useRef<HTMLButtonElement>(null);
+  const [image, setImage] = useState("");
+  const [apollox_key, setKey] = useState("");
+  const [apollox_secret, setSecret] = useState("");
+  const [auth, setAuth] = useState("");
+  const [isLoading, setLoading] = useState(false)
 
-  const checkAlert = (actions: any) => {
-    actions.setSubmitting(false);
-    onOpen();
-  };
+  useEffect(() => {
+    setLoading(true)
+    fetch('/api/user')
+      .then((res) => res.json())
+      .then((data) => {
+        setKey(data.apollox_key || "");
+        setSecret(data.apollox_secret || "");
+        setAuth(data.auth || "");
+        setImage(data.image || "");
+        setLoading(false);
+      });
+  }, [])
 
   const formSubmit: any = async () => {
-    onClose();
-    let telegramId = session?.user?.telegramId || "";
+    let email = session?.user?.email || "";
 
-    const res = await axios.post("/api/update", { telegramId, name, email, phone })
-      .then(() => {
-        signOut();
+    const res = await axios.post("/api/update", { email, name, apollox_key, apollox_secret })
+      .then(async () => {
+        await signIn('update-user', {
+          redirect: true,
+          callbackUrl: '/myprofile',
+          email: email,
+          name: name,
+        });
+        toast({description: "Profile up to date", status: 'success', position: 'bottom-right', isClosable: true, duration: 3000})
       })
       .catch((error) => {
         toast({description: error.response.data.error, status: 'error', position: 'bottom-right', isClosable: true, duration: 3000})
@@ -54,76 +58,62 @@ const MyProfile = () => {
   };
 
   return (
-    <>
-      { !session ? <Error msg={"<b>Sign In</b> to your account first"}/> :
-        <Box bgColor={useColorModeValue('gray.700', 'white')} borderRadius='lg' boxShadow='20px 20px 50px -20px' p="3em" m='auto' mt='10' w={["100%", "75%", "50%"]}>
-          <Box mt='-8em' height={'8em'}>
-            <Image m='auto' h='150' src={useColorModeValue('logo-hero-dark.png', 'logo-hero-light.png')}  borderRadius='50%'/>
-          </Box>
-          <Formik initialValues={{}} validateOnChange={false} validateOnBlur={false} onSubmit={(_, actions) => {checkAlert(actions);}}>
-            {(props) => (
-              <Form style={{ width: "100%" }}>
-                <Box display="flex" flexDirection="column" w="100%" mb={4}>
-                  <Field name="telegramId">
-                    {() => (
-                      <FormControl isRequired mb={6}>
-                        <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="telegramId">Telegram ID:</FormLabel>
-                        <Tooltip label="Telegram ID cannot be changed" fontSize='sm' placement='top' hasArrow>
-                          <Input value={session.user?.telegramId || ""} readOnly textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="Telegram ID"/>
-                        </Tooltip>
-                      </FormControl>
-                    )}
-                  </Field>
-                  <Field name="username">
-                    {() => (
-                      <FormControl isRequired mb={6}>
-                        <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="username">Name:</FormLabel>
-                        <Input value={name} onChange={(e) => setName(e.target.value)} textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="Your displayed Name"/>
-                      </FormControl>
-                    )}
-                  </Field>
-                  <Field name="email">
-                    {() => (
-                      <FormControl mb={6}>
-                        <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="email">Email:</FormLabel>
-                        <Input value={email} onChange={(e) => setEmail(e.target.value)} textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="No email set"/>
-                      </FormControl>
-                    )}
-                  </Field>
-                  <Field name="phone">
-                    {() => (
-                      <FormControl mb={6}>
-                        <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="phone">Phone number:</FormLabel>
-                        <Input value={phone} onChange={(e) => setPhone(e.target.value)} textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="No phone number set" focusBorderColor='input'/>
-                      </FormControl>
-                    )}
-                  </Field>
-                  <Button mt={6} bg='main' textColor='black' isLoading={props.isSubmitting} type="submit">
-                    Update Information
-                  </Button>
-                  <AlertDialog motionPreset='slideInBottom' leastDestructiveRef={cancelRef} onClose={onClose} isOpen={isOpen} isCentered>
-                    <AlertDialogOverlay/>
-                    <AlertDialogContent>
-                      <AlertDialogHeader>Update Information?</AlertDialogHeader>
-                      <AlertDialogCloseButton />
-                      <AlertDialogBody>For updating your information you need to Sign Out.<br></br>Do you want to continue?</AlertDialogBody>
-                      <AlertDialogFooter>
-                        <Button ref={cancelRef} onClick={onClose}>
-                          No
-                        </Button>
-                        <Button colorScheme='red' ml={3} onClick={formSubmit}>
-                          Yes
-                        </Button>
-                      </AlertDialogFooter>
-                    </AlertDialogContent>
-                  </AlertDialog>
-                </Box>
-              </Form>
-            )}
-          </Formik>
-        </Box>
-      }
-    </>
+    <Box bgColor={colorMode == 'light' ? 'gray.700' : 'white'} borderRadius='lg' boxShadow='20px 20px 50px -20px' p="3em" m='auto' mt='10' w={["100%", "75%", "50%"]}>
+      <Box mt='-8em' height={'8em'}>
+        <Image m='auto' h='150' src={image ? image : colorMode == 'light' ? 'logo-hero-dark.png' : 'logo-hero-light.png' }  borderRadius='50%'/>
+      </Box>
+      <Formik initialValues={{}} validateOnChange={false} validateOnBlur={false} onSubmit={() => formSubmit()}>
+        {(props) => (
+          <Form style={{ width: "100%" }}>
+            <Box display="flex" flexDirection="column" w="100%" mb={4}>
+              <Field name="name">
+                {() => (
+                  <FormControl isRequired mb={6}>
+                    <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="name">Name:</FormLabel>
+                    <Input value={name} onChange={(e) => setName(e.target.value)} textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="Your displayed Name"/>
+                  </FormControl>
+                )}
+              </Field>
+              <Field name="email">
+                {() => (
+                  <FormControl isRequired mb={6}>
+                    <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="email">Email:</FormLabel>
+                    <Input value={email} onChange={(e) => setEmail(e.target.value)} textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="No email set"/>
+                  </FormControl>
+                )}
+              </Field>
+              <Field name="key">
+                {() => (
+                  <FormControl mb={6}>
+                    <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="key">ApolloX Key:</FormLabel>
+                    <Input value={apollox_key} onChange={(e) => setKey(e.target.value)} textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="No key set"/>
+                  </FormControl>
+                )}
+              </Field>
+              <Field name="secret">
+                {() => (
+                  <FormControl mb={6}>
+                    <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="secret">ApolloX Secret:</FormLabel>
+                    <Input value={apollox_secret} onChange={(e) => setSecret(e.target.value)} textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="No secret set"/>
+                  </FormControl>
+                )}
+              </Field>
+              <Field name="auth">
+                {() => (
+                  <FormControl mb={6}>
+                    <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="auth">Authentication key:</FormLabel>
+                    <Input value={auth} onChange={(e) => setAuth(e.target.value)} textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="Set ApolloX key and secret to create your authentication key"/>
+                  </FormControl>
+                )}
+              </Field>
+              <Button mt={6} bg='main' textColor='black' _hover={{bg: 'gray.700', textColor: 'white'}} isLoading={props.isSubmitting} type="submit">
+                Update Information
+              </Button>
+            </Box>
+          </Form>
+        )}
+      </Formik>
+    </Box>
   );
 };
 

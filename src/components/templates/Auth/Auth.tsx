@@ -80,7 +80,7 @@ const Auth: NextPage = ({ providers }: any) => {
   };
 
   const loginUser = async () => {
-    const res: any = await signIn("credentials", {
+    const res: any = await signIn("auth", {
       redirect: false,
       email: email,
       password: password,

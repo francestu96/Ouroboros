@@ -9,3 +9,4 @@ export * from './SupportedChains';
 export * from './Testimonials';
 export * from './Faq';
 export * from './Footer';
+export * from './AuthProvider';

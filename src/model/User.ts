@@ -15,6 +15,23 @@ const userSchema = new Schema({
   },
   email: {
     type: String,
+    required: true,
+    unique: true
+  },
+  image: {
+    type: String,
+    required: false,
+  },
+  apollox_key: {
+    type: String,
+    required: false,
+  },
+  apollox_secret: {
+    type: String,
+    required: false,
+  },
+  auth: {
+    type: String,
     required: false,
   },
 });

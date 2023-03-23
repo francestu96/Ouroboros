@@ -18,7 +18,7 @@ export default NextAuth({
       clientSecret: process.env.GITHUB_SECRET || "",
     }),
     CredentialsProvider({
-      id: "credentials",
+      id: "auth",
       name: "Credentials",
       credentials: {
         email: {
@@ -29,8 +29,7 @@ export default NextAuth({
           label: "Password",
           type: "text",
         },
-      },
-      
+      },        
       async authorize(credentials) {
         await dbConnect();
 
@@ -47,6 +46,25 @@ export default NextAuth({
         }
 
         return user;
+      },
+    }),
+    CredentialsProvider({
+      id: 'update-user',
+      credentials: {
+        email: {
+          label: "email",
+          type: "text",
+        },
+        name: {
+          label: "name",
+          type: "text",
+        },
+      },
+      authorize(credentials): any  {
+        return {
+          email: credentials?.email,
+          name: credentials?.name,
+        };
       },
     })
   ],
@@ -74,7 +92,7 @@ export default NextAuth({
     async session({ session, token }) {
       if (token) {
         session.user.name = token.name;
-        session.user.email = token.email;
+        session.user.email = token.email || "";
       }
       return session;
     }

@@ -5,6 +5,9 @@ declare module "next-auth" {
     user: {
       name: string;
       email: string;
+      apollox_key: string;
+      apollox_secret: string;
+      auth: string;
     };
   }
   
@@ -14,12 +17,12 @@ declare module "next-auth" {
     email: string;
     apollox_key: string;
     apollox_secret: string;
+    auth: string;
   }
 }
 
 declare module "next-auth/jwt" {
   interface JWT {
     name: string;
-    email: string;
   }
 }

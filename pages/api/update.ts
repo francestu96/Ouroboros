@@ -1,55 +1,53 @@
 import User from "model/User";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { getToken } from "next-auth/jwt";
 import dbConnect from "utils/dbConnect";
 
+const secret = process.env.NEXTAUTH_JWT_SECRET;
 interface ResponseData {
   error?: string;
   msg?: string;
 }
 
-const validateEmail = (email: string): boolean => {
-  const regEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-  return regEx.test(email) || !email;
+const validateKeys = (key: string): boolean => {
+  return true;
 };
 
-const validatePhone = (phone: string): boolean => {
-  const regEx = /\+[\d]*/i;
-  return regEx.test(phone) || !phone;
-};
-
-const validateForm = async (name: string, email: string, phone: string) => {
+const validateForm = async (name: string, apollox_key: string, apollox_secret: string) => {
   if (name.length < 3) {
     return { error: "Name must have 3 or more characters" };
   }
-  if (!validateEmail(email)) {
-    return { error: "Email is invalid" };
+  if (!validateKeys(apollox_key)) {
+    return { error: "ApolloX key is not valid" };
   }
-  if (!validatePhone(phone)) {
-    return { error: "Phone number is invalid. Try adding the prefix" };
+  if (!validateKeys(apollox_secret)) {
+    return { error: "ApolloX secret is not valid" };
   }
 
   return null;
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
-  if (req.method !== "POST") {
-    return res.status(200).json({ error: "This API call only accepts POST methods" });
+  const token = await getToken({ req, secret })
+  if (!token) {
+    res.status(401).json({ msg: "Unauthorized"})
+    res.end()
   }
 
-  const { telegramId, name, email, phone } = req.body;
+  const email = token?.email;
+  const { name, apollox_key, apollox_secret } = req.body;
 
-  const errorMessage = await validateForm(name, email, phone);
+  const errorMessage = await validateForm(name, apollox_key, apollox_secret);
 
   if (errorMessage) {
     return res.status(400).json(errorMessage as ResponseData);
   }
 
   await dbConnect();
-  const telegramIdUser = await User.findOneAndUpdate({ telegramId }, {name, email, phone});
-
-  if (!telegramIdUser) {
+  const user = await User.findOneAndUpdate({ email }, { name, email, apollox_key, apollox_secret});
+  if (!user) {
     return res.status(400).json({ error: "Telegram ID not found" } as ResponseData);
   }
 
-  return res.status(200).json({ msg: "Successfuly update user " + telegramIdUser.telegramId })
+  return res.status(200).json({ msg: "Successfuly update user " })
 }

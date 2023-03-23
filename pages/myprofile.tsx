@@ -1,11 +1,14 @@
 import { Default } from 'components/templates/Default';
 import { NextPage } from 'next';
-import MyProfile from 'components/templates/myprofile/MyProfile';
+import { AuthProvider } from 'components/elements';
+import { MyProfile } from 'components/templates';
 
 const WithdrawalsPage: NextPage = () => {
   return (
     <Default pageName="MyProfile">
-      <MyProfile/>
+      <AuthProvider>
+        <MyProfile/>
+      </AuthProvider>
     </Default>
   );
 };
