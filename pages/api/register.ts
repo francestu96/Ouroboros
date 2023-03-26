@@ -28,9 +28,7 @@ const validateForm = async (name: string, email: string, password: string) => {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
   if (req.method !== "POST") {
-    return res
-      .status(200)
-      .json({ error: "This API call only accepts POST methods" });
+    return res.status(200).json({ error: "This API call only accepts POST methods" });
   }
 
   const { name, email, password } = req.body;

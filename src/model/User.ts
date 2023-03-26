@@ -33,6 +33,7 @@ const userSchema = new Schema({
   auth: {
     type: String,
     required: false,
+    unique: true
   },
 });
 
