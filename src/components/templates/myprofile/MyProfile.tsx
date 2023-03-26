@@ -102,7 +102,7 @@ const MyProfile = () => {
                 {() => (
                   <FormControl mb={6}>
                     <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="auth">Authentication key:</FormLabel>
-                    <Input value={auth} onChange={(e) => setAuth(e.target.value)} textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="Set ApolloX key and secret to create your authentication key"/>
+                    <Input disabled value={auth} onChange={(e) => setAuth(e.target.value)} textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="Set ApolloX key and secret to create your authentication key"/>
                   </FormControl>
                 )}
               </Field>
