@@ -34,7 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     side: direction,
     type: "MARKET",
     quantity: quantity,
-    timestamp: new Date().getTime()
+    timestamp: new Date().getTime().toString()
   }
   
   const signed_data = {

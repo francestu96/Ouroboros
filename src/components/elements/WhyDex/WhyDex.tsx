@@ -4,7 +4,7 @@ import { motion, isValidMotionProp, useInView } from 'framer-motion'
 import { useRef } from "react";
 
 const animation = { translateX: [-100, 0], opacity: [0, 1] }
-const transition = { duration: 1, ease: "easeInOut" }
+const transition = { duration: "1", ease: "easeInOut" }
 
 const ChakraBox = chakra(motion.div, {
   shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),

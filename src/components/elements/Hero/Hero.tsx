@@ -4,7 +4,7 @@ import { motion, isValidMotionProp } from 'framer-motion'
 
 const imageAnimation = { scale: [0, 1.1, 1, 1.05, 1], rotate: [0, -720, 720, 0, 0] };
 const textAnimation = { translateX: [-100, 0], opacity: [0, 1] }
-const transition = { duration: 3, ease: "easeInOut" }
+const transition = { duration: "3", ease: "easeInOut" }
 
 const ChakraBox = chakra(motion.div, {
   shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -26,7 +26,7 @@ const Hero = () => {
               </Text>
             </Heading>
             <Text fontSize={{ base: 'md', lg: 'lg' }} color={'gray.500'}>
-              The project board is an exclusive resource for contract work. It's
+              The project board is an exclusive resource for contract work. It&aposs
               perfect for freelancers, agencies, and moonlighters.
             </Text>
             <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>

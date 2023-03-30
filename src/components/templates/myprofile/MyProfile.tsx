@@ -6,7 +6,6 @@ import {
   useToast,
   FormLabel,
   Image,
-  useColorModeValue,
   useColorMode
 } from '@chakra-ui/react';
 import axios from 'axios';
@@ -69,40 +68,40 @@ const MyProfile = () => {
               <Field name="name">
                 {() => (
                   <FormControl isRequired mb={6}>
-                    <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="name">Name:</FormLabel>
-                    <Input value={name} onChange={(e) => setName(e.target.value)} textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="Your displayed Name"/>
+                    <FormLabel textColor={colorMode == 'light' ? 'white' : 'black'} htmlFor="name">Name:</FormLabel>
+                    <Input value={name} onChange={(e) => setName(e.target.value)} textColor={colorMode == 'light' ? 'white' : 'black'} _placeholder={{ color: 'gray.500' }} border={colorMode == 'light' ? '1px solid white' : '1px solid black'} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="Your displayed Name"/>
                   </FormControl>
                 )}
               </Field>
               <Field name="email">
                 {() => (
                   <FormControl isRequired mb={6}>
-                    <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="email">Email:</FormLabel>
-                    <Input value={email} onChange={(e) => setEmail(e.target.value)} textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="No email set"/>
+                    <FormLabel textColor={colorMode == 'light' ? 'white' : 'black'} htmlFor="email">Email:</FormLabel>
+                    <Input value={email} onChange={(e) => setEmail(e.target.value)} textColor={colorMode == 'light' ? 'white' : 'black'} _placeholder={{ color: 'gray.500' }} border={colorMode == 'light' ? '1px solid white' : '1px solid black'} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="No email set"/>
                   </FormControl>
                 )}
               </Field>
               <Field name="key">
                 {() => (
                   <FormControl mb={6}>
-                    <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="key">ApolloX Key:</FormLabel>
-                    <Input value={apollox_key} onChange={(e) => setKey(e.target.value)} textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="No key set"/>
+                    <FormLabel textColor={colorMode == 'light' ? 'white' : 'black'} htmlFor="key">ApolloX Key:</FormLabel>
+                    <Input value={apollox_key} onChange={(e) => setKey(e.target.value)} textColor={colorMode == 'light' ? 'white' : 'black'} _placeholder={{ color: 'gray.500' }} border={colorMode == 'light' ? '1px solid white' : '1px solid black'} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="No key set"/>
                   </FormControl>
                 )}
               </Field>
               <Field name="secret">
                 {() => (
                   <FormControl mb={6}>
-                    <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="secret">ApolloX Secret:</FormLabel>
-                    <Input value={apollox_secret} onChange={(e) => setSecret(e.target.value)} textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="No secret set"/>
+                    <FormLabel textColor={colorMode == 'light' ? 'white' : 'black'} htmlFor="secret">ApolloX Secret:</FormLabel>
+                    <Input value={apollox_secret} onChange={(e) => setSecret(e.target.value)} textColor={colorMode == 'light' ? 'white' : 'black'} _placeholder={{ color: 'gray.500' }} border={colorMode == 'light' ? '1px solid white' : '1px solid black'} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="No secret set"/>
                   </FormControl>
                 )}
               </Field>
               <Field name="auth">
                 {() => (
                   <FormControl mb={6}>
-                    <FormLabel textColor={useColorModeValue('white', 'black')} htmlFor="auth">Authentication key:</FormLabel>
-                    <Input disabled value={auth} onChange={(e) => setAuth(e.target.value)} textColor={useColorModeValue('white', 'black')} _placeholder={{ color: 'gray.500' }} border={useColorModeValue('1px solid white', '1px solid black')} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="Set ApolloX key and secret to create your authentication key"/>
+                    <FormLabel textColor={colorMode == 'light' ? 'white' : 'black'} htmlFor="auth">Authentication key:</FormLabel>
+                    <Input disabled value={auth} onChange={(e) => setAuth(e.target.value)} textColor={colorMode == 'light' ? 'white' : 'black'} _placeholder={{ color: 'gray.500' }} border={colorMode == 'light' ? '1px solid white' : '1px solid black'} focusBorderColor='input' _hover={{ borderColor: "main" }} placeholder="Set ApolloX key and secret to create your authentication key"/>
                   </FormControl>
                 )}
               </Field>

@@ -4,7 +4,7 @@ import { motion, isValidMotionProp, useInView } from 'framer-motion'
 import { useRef } from "react";
 
 const animation = { opacity: [0, 1] }
-const transition = { duration: 1.5, ease: "easeInOut" }
+const transition = { duration: "1.5", ease: "easeInOut" }
 
 const ChakraBox = chakra(motion.div, {
   shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -44,7 +44,7 @@ const HowItWorks = () => {
               </Stack>
             </Stack>
           </ChakraBox>
-          <ChakraBox ref={ref} animate={isInView ? animation : 'none' } transition={{delay: 0.5, ...transition}} p={6} maxW={'330px'} w={'full'} bg={useColorModeValue('white', '#2F3849')} boxShadow={'2xl'} rounded={'lg'} pos={'relative'} zIndex={1}>
+          <ChakraBox ref={ref} animate={isInView ? animation : 'none' } transition={{delay: "0.5", ...transition}} p={6} maxW={'330px'} w={'full'} bg={useColorModeValue('white', '#2F3849')} boxShadow={'2xl'} rounded={'lg'} pos={'relative'} zIndex={1}>
             <Box
               rounded={'lg'}
               mt={-12}
@@ -69,7 +69,7 @@ const HowItWorks = () => {
               </Stack>
             </Stack>
           </ChakraBox>
-          <ChakraBox ref={ref} animate={isInView ? animation : 'none' } transition={{delay: 1, ...transition}} p={6} maxW={'330px'} w={'full'} bg={useColorModeValue('white', '#2F3849')} boxShadow={'2xl'} rounded={'lg'} pos={'relative'} zIndex={1}>
+          <ChakraBox ref={ref} animate={isInView ? animation : 'none' } transition={{delay: "1", ...transition}} p={6} maxW={'330px'} w={'full'} bg={useColorModeValue('white', '#2F3849')} boxShadow={'2xl'} rounded={'lg'} pos={'relative'} zIndex={1}>
             <Box
               rounded={'lg'}
               mt={-12}

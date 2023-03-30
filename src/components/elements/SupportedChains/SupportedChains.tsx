@@ -4,7 +4,7 @@ import { Text } from '@chakra-ui/react'
 import { useRef } from "react";
 
 const animation = { opacity: [0, 1] }
-const transition = { duration: 1.5, ease: "easeInOut" }
+const transition = { duration: "1.5", ease: "easeInOut" }
 
 const ChakraBox = chakra(motion.div, {
   shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -35,7 +35,7 @@ const SupportedChains = () => {
           </ChakraBox>
         </GridItem>
         <GridItem colSpan={3} rounded='lg' bg={useColorModeValue('gray.700', 'white')}>
-          <ChakraBox ref={ref} animate={isInView ? animation : 'none' } transition={{delay: 0.5, ...transition}}>
+          <ChakraBox ref={ref} animate={isInView ? animation : 'none' } transition={{delay: "0.5", ...transition}}>
             <HStack>
               <Flex flex='25' p='6'>
                 <Image rounded={'lg'} objectFit={'cover'} src='/bsc.svg'/>
@@ -48,7 +48,7 @@ const SupportedChains = () => {
           </ChakraBox>
         </GridItem>
         <GridItem colSpan={3} rounded='lg' bg={useColorModeValue('gray.700', 'white')}>
-         <ChakraBox ref={ref} animate={isInView ? animation : 'none' } transition={{delay: 1, ...transition}}>
+         <ChakraBox ref={ref} animate={isInView ? animation : 'none' } transition={{delay: "1", ...transition}}>
             <HStack>
               <Flex flex='25' p='6'>
                 <Image rounded={'lg'} objectFit={'cover'} src='/arbitrum.svg'/>
@@ -61,7 +61,7 @@ const SupportedChains = () => {
           </ChakraBox>
         </GridItem>
         <GridItem colSpan={3} rounded='lg' bg={useColorModeValue('#2F3849', 'white')}>
-          <ChakraBox ref={ref} animate={isInView ? animation : 'none' } transition={{delay: 1.5, ...transition}}>
+          <ChakraBox ref={ref} animate={isInView ? animation : 'none' } transition={{delay: "1.5", ...transition}}>
             <HStack>
               <Flex flex='25' p='6'>
                 <Image rounded={'lg'} objectFit={'cover'} src='/coming-soon.svg'/>
