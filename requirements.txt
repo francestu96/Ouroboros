@@ -1,5 +1,0 @@
-flask
-gunicorn
-python-binance
-python-dotenv
-pymongo
