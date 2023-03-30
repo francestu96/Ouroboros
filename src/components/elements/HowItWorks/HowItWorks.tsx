@@ -31,7 +31,7 @@ const HowItWorks = () => {
                   filter: 'blur(20px)',
                 },
               }}>
-              <Image rounded={'lg'} height={230} width={282} objectFit={'cover'} src='/desk.png'/>
+              <Image rounded={'lg'} height={230} width={282} objectFit={'cover'} src='/desk.png' alt=""/>
             </Box>
             <Stack pt={10} align={'center'}>
               <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={800} textAlign='center'>
@@ -56,7 +56,7 @@ const HowItWorks = () => {
                   filter: 'blur(20px)',
                 },
               }}>
-              <Image rounded={'lg'} height={230} width={282} objectFit={'cover'} src='/connect.png'/>
+              <Image rounded={'lg'} height={230} width={282} objectFit={'cover'} src='/connect.png' alt=""/>
             </Box>
             <Stack pt={10} align={'center'}>
               <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={800} textAlign='center'>
@@ -81,7 +81,7 @@ const HowItWorks = () => {
                   filter: 'blur(20px)',
                 },
               }}>
-              <Image rounded={'lg'} height={230} width={282} objectFit={'cover'} src='/trade.png'/>
+              <Image rounded={'lg'} height={230} width={282} objectFit={'cover'} src='/trade.png' alt=""/>
             </Box>
             <Stack pt={10} align={'center'}>
               <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={800} textAlign='center'>

@@ -59,7 +59,7 @@ const MyProfile = () => {
   return (
     <Box bgColor={colorMode == 'light' ? 'gray.700' : 'white'} borderRadius='lg' boxShadow='20px 20px 50px -20px' p="3em" m='auto' mt='10' w={["100%", "75%", "50%"]}>
       <Box mt='-8em' height={'8em'}>
-        <Image m='auto' h='150' src={image ? image : colorMode == 'light' ? 'logo-hero-dark.png' : 'logo-hero-light.png' }  borderRadius='50%'/>
+        <Image alt="" m='auto' h='150' src={image ? image : colorMode == 'light' ? 'logo-hero-dark.png' : 'logo-hero-light.png' }  borderRadius='50%'/>
       </Box>
       <Formik initialValues={{}} validateOnChange={false} validateOnBlur={false} onSubmit={() => formSubmit()}>
         {(props) => (

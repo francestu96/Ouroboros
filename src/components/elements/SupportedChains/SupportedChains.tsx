@@ -25,7 +25,7 @@ const SupportedChains = () => {
           <ChakraBox ref={ref} animate={isInView ? animation : 'none' } transition={transition}>
             <HStack>
               <Flex flex='25' p='6'>
-                <Image rounded={'lg'} objectFit={'cover'} src='/eth.svg'/>
+                <Image rounded={'lg'} objectFit={'cover'} src='/eth.svg' alt=""/>
               </Flex>
               <Flex flex='75' p='6' textColor={useColorModeValue('white', 'black')}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -38,7 +38,7 @@ const SupportedChains = () => {
           <ChakraBox ref={ref} animate={isInView ? animation : 'none' } transition={{delay: "0.5", ...transition}}>
             <HStack>
               <Flex flex='25' p='6'>
-                <Image rounded={'lg'} objectFit={'cover'} src='/bsc.svg'/>
+                <Image rounded={'lg'} objectFit={'cover'} src='/bsc.svg' alt=""/>
               </Flex>
               <Flex flex='75' p='6' textColor={useColorModeValue('white', 'black')}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -51,7 +51,7 @@ const SupportedChains = () => {
          <ChakraBox ref={ref} animate={isInView ? animation : 'none' } transition={{delay: "1", ...transition}}>
             <HStack>
               <Flex flex='25' p='6'>
-                <Image rounded={'lg'} objectFit={'cover'} src='/arbitrum.svg'/>
+                <Image rounded={'lg'} objectFit={'cover'} src='/arbitrum.svg' alt=""/>
               </Flex>
               <Flex flex='75' p='6' textColor={useColorModeValue('white', 'black')}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -64,7 +64,7 @@ const SupportedChains = () => {
           <ChakraBox ref={ref} animate={isInView ? animation : 'none' } transition={{delay: "1.5", ...transition}}>
             <HStack>
               <Flex flex='25' p='6'>
-                <Image rounded={'lg'} objectFit={'cover'} src='/coming-soon.svg'/>
+                <Image rounded={'lg'} objectFit={'cover'} src='/coming-soon.svg' alt=""/>
               </Flex>
               <Flex flex='75' p='6' textColor={useColorModeValue('white', 'black')}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

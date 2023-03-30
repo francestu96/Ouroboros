@@ -35,7 +35,7 @@ const WhyDex = () => {
                 There is no exchange of personal data between the exchange and an authority.
               </Text>
               <Box flex='50'>
-                <Image src="/anonymous.png" borderRadius='3xl'></Image>
+                <Image src="/anonymous.png" borderRadius='3xl' alt=""/>
               </Box>
             </HStack>
           </TabPanel>
@@ -51,7 +51,7 @@ const WhyDex = () => {
                   Each user has full access to their private keys and, therefore, their crypto assets.
                 </Text>
                 <Box flex='50'>
-                  <Image src="/nyknyc.png" borderRadius='3xl'></Image>
+                  <Image src="/nyknyc.png" borderRadius='3xl' alt=""/>
                 </Box>
               </HStack>
             </ChakraBox>
@@ -65,7 +65,7 @@ const WhyDex = () => {
                 Since a DEX resides directly on the blockchain, it cannot target an attack on a central server.
                 </Text>
                 <Box flex='50'>
-                  <Image src="/fees.png" borderRadius='3xl'></Image>
+                  <Image src="/fees.png" borderRadius='3xl' alt=""/>
                 </Box>
               </HStack>
             </ChakraBox>
