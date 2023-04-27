@@ -8,6 +8,7 @@ const Default: FC<{ children: ReactNode; pageName: string }> = ({ children, page
     <Head>
       <title>{`${pageName}`}</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <link rel="icon" href="/favicon.ico"></link>
     </Head>
     <Header />
     <Container maxW="container.xl" p={3} marginTop={50} as="main" minH={["60vh", "62vh"]}>

@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import { AuthProvider } from 'components/elements';
 import { MyProfile } from 'components/templates';
 
-const WithdrawalsPage: NextPage = () => {
+const MyProfilePage: NextPage = () => {
   return (
     <Default pageName="MyProfile">
       <AuthProvider>
@@ -13,4 +13,4 @@ const WithdrawalsPage: NextPage = () => {
   );
 };
 
-export default WithdrawalsPage;
+export default MyProfilePage;
