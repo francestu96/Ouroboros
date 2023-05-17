@@ -41,10 +41,9 @@ export default NextAuth({
           throw new Error("Email is not registered");
         }
 
-        if (!user.comparePassword(credentials!.password)) {
+        if (!(await user.comparePassword(credentials!.password))) {
           throw new Error("Password is incorrect");
         }
-
         return user;
       },
     }),

@@ -22,6 +22,7 @@ import {
   FiBell,
   FiBook,
   FiKey,
+  FiPocket,
 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
@@ -34,15 +35,15 @@ interface LinkItemProps {
 const LinkItems: Array<LinkItemProps> = [
   { name: "TLTR;", icon: FiBook, hash: "#tltr"},
   { name: "Create the key pair", icon: FiKey, hash: "#pair" },
+  { name: "Add pair liquidity", icon: FiPocket, hash: "#liquidity" },
   { name: "Create TV alert", icon: FiBell, hash: "#alert" },
-  { name: "Attach the strategy", icon: FiActivity, hash: "#strategy" },
   { name: "Roadmap", icon: FiTrendingUp, hash: "#roadmap" },
 ];
 
 const Documentation = ({ children }: { children: ReactNode }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.800')} borderRadius="xl">
+    <Flex minH="100vh" bg={useColorModeValue('gray.100', 'gray.800')} borderRadius="xl">
       <SidebarContent
         onClose={() => onClose}
         display={{ base: 'none', md: 'block' }}
@@ -62,10 +63,10 @@ const Documentation = ({ children }: { children: ReactNode }) => {
       </Drawer>
       {/* mobilenav */}
       <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4rem 8rem">
+      <Box flex="auto" p="4rem 8rem">
         {children}
       </Box>
-    </Box>
+    </Flex>
   );
 }
 
@@ -81,8 +82,6 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       borderRight="1px"
       borderRightColor={useColorModeValue('gray.200', 'gray.600')}
       w={{ base: 'full', md: 60 }}
-      pos="absolute"
-      h="100vh"
       {...rest}>
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
@@ -115,7 +114,7 @@ const NavItem = ({ icon, children, hash, ...rest }: NavItemProps) => {
         role="group"
         cursor="pointer"
         _hover={{
-          bg: 'cyan.400',
+          bg: 'main',
           color: 'white',
         }}
         {...rest}>
