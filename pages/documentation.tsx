@@ -1,11 +1,12 @@
 import { Default } from 'components/templates/Default';
 import { NextPage } from 'next';
 import { Documentation } from 'components/templates';
-import { Box, Container } from '@chakra-ui/react';
+import { Stack, Text, Box, Container, Link, useColorMode } from '@chakra-ui/react';
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
 
 const DocumentationPage: NextPage = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
   const [hash, setHash] = useState("tltr");
   const router = useRouter();
 
@@ -26,33 +27,39 @@ const DocumentationPage: NextPage = () => {
     switch(hash) {
       case "pair":
         return (
-          <Box>
-            pair
-          </Box>
+          <Stack spacing='8'>
+            <Text fontSize='3xl' fontWeight="bold">Create your ApolloX key pair</Text>
+            <Box bgColor={colorMode == 'light' ? 'gray.600' : 'gray.300'} textColor={colorMode == 'light' ? 'white' : 'black'} borderRadius="xl" background="" p="2rem">
+              Connect to <Link href="https://www.apollox.finance" target="_blank">ApolloX</Link> and naviate to <b>API</b>
+            </Box>
+          </Stack>
         )
       case "alert":
         return (
-          <Box>
+          <Stack>
             alert
-          </Box>
+          </Stack>
         )
       case "strategy":
         return (
-          <Box>
+          <Stack>
             strategy
-          </Box>
+          </Stack>
         )
       case "roadmap":
         return (
-          <Box>
-            roadmap
-          </Box>
+          <Stack spacing='8'>
+            <Text fontSize='3xl' fontWeight="bold">Roadmap</Text>
+            <Box bgColor={colorMode == 'light' ? 'gray.600' : 'gray.300'} textColor={colorMode == 'light' ? 'white' : 'black'} borderRadius="xl" background="" p="2rem">
+              To Be Defined.
+            </Box>
+          </Stack>
         )
       default:
         return (
-          <Box>
+          <Stack>
             tltr
-          </Box>
+          </Stack>
         )
     }
   }
