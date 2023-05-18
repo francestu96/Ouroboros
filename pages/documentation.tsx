@@ -42,7 +42,7 @@ const DocumentationPage: NextPage = () => {
                 </ListItem>
                 <ListItem>
                   <ListIcon as={CheckCircleIcon} color='green.500' />
-                  Navigate <b>over your wallet address > API Management</b> to open your API management panel
+                  Navigate <b>over your wallet address &gt; API Management</b> to open your API management panel
                 </ListItem>
                 <ListItem>
                   <Image src="/doc/api.png" boxSize="80%" alt="API Management" margin="auto" borderRadius="3xl"/>
@@ -57,7 +57,7 @@ const DocumentationPage: NextPage = () => {
                 </ListItem>
                 <ListItem>
                   <ListIcon as={CheckCircleIcon} color='green.500' />
-                  Navigate over <b>your profile > My Profile</b> and paste the <b>ApolloX Key</b> and the <b>ApolloX Secret</b>
+                  Navigate over <b>your profile &gt; My Profile</b> and paste the <b>ApolloX Key</b> and the <b>ApolloX Secret</b>
                 </ListItem>
                 <ListItem>
                   <ListIcon as={CheckCircleIcon} color='green.500' />
@@ -131,12 +131,12 @@ const DocumentationPage: NextPage = () => {
                 <ListItem>
                   <Box bgColor="#131722" p="3em" textColor="white" width="65%" margin="auto"  borderRadius="3xl">
                     &#123;<br></br>
-                    &emsp;"auth": "&lt;your_authentication_key_here&gt;",<br></br>
-                    &emsp;"exchange": "&#123;&#123;exchange&#125;&#125;",<br></br>
-                    &emsp;"orderId":"&#123;&#123;strategy.order.id&#125;&#125;",<br></br>
-                    &emsp;"symbol": "&#123;&#123;ticker&#125;&#125;",<br></br>
-                    &emsp;"action": "&#123;&#123;strategy.order.action&#125;&#125;",<br></br>
-                    &emsp;"size": "&#123;&#123;strategy.order.contracts&#125;&#125;"<br></br>
+                    &emsp;&quot;auth&quot;: &quot;&lt;your_authentication_key_here&gt;&quot;,<br></br>
+                    &emsp;&quot;exchange&quot;: &quot;&#123;&#123;exchange&#125;&#125;&quot;,<br></br>
+                    &emsp;&quot;orderId&quot;:&quot;&#123;&#123;strategy.order.id&#125;&#125;&quot;,<br></br>
+                    &emsp;&quot;symbol&quot;: &quot;&#123;&#123;ticker&#125;&#125;&quot;,<br></br>
+                    &emsp;&quot;action&quot;: &quot;&#123;&#123;strategy.order.action&#125;&#125;&quot;,<br></br>
+                    &emsp;&quot;size&quot;: &quot;&#123;&#123;strategy.order.contracts&#125;&#125;&quot;<br></br>
                     &#125;
                   </Box>
                 </ListItem>
@@ -194,7 +194,7 @@ const DocumentationPage: NextPage = () => {
           <Stack spacing='8'>
             <Text fontSize='3xl' fontWeight="bold">Too Long To Read</Text>
             <Box bgColor={colorMode == 'light' ? 'gray.600' : 'gray.300'} textColor={colorMode == 'light' ? 'white' : 'black'} borderRadius="xl" background="" p="2rem">
-              Too lazy to read the doc? <br></br> Don't worry, a <b>video tutorial</b> is cooming soon!
+              Too lazy to read the doc? <br></br> Don&apos;t worry, a <b>video tutorial</b> is cooming soon!
             </Box>
           </Stack>
         )
