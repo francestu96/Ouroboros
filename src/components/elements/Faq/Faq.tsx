@@ -1,4 +1,4 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box } from "@chakra-ui/react";
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Link } from "@chakra-ui/react";
 import { Text } from '@chakra-ui/react'
 
 const Faq = () => {
@@ -9,75 +9,61 @@ const Faq = () => {
         <AccordionItem>
             <AccordionButton>
               <Box as="span" flex='1' textAlign='left' fontWeight='bold' fontSize={{ base: 'md', md: 'lg', lg: 'xl' }}>
-                Section 1 title
+                Which are the Ouroboros pricing plans?
               </Box>
               <AccordionIcon />
             </AccordionButton>
           <AccordionPanel pb={4}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo consequat.
+            Ouroboros, at the moment, is completely free to use
           </AccordionPanel>
         </AccordionItem>
 
         <AccordionItem>
             <AccordionButton>
               <Box as="span" flex='1' textAlign='left' fontWeight='bold' fontSize={{ base: 'md', md: 'lg', lg: 'xl' }}>
-                Section 2 title
+                Do I need sound technical skills to setup Ouroboros?
               </Box>
               <AccordionIcon />
             </AccordionButton>
           <AccordionPanel pb={4}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo consequat.
+            <b>Ouroboros</b> is very simple to setup and anyone can do this. The only think you need is a good <b>PineScript</b> strategy to apply to your charts.
+            Fortunately the TradingView community is full of strategies you can use.
           </AccordionPanel>
         </AccordionItem>
 
         <AccordionItem>
             <AccordionButton>
               <Box as="span" flex='1' textAlign='left' fontWeight='bold' fontSize={{ base: 'md', md: 'lg', lg: 'xl' }}>
-                Section 2 title
+                Do I have to leave my computer 24/7 open and running or rent a VPS?
               </Box>
               <AccordionIcon />
             </AccordionButton>
           <AccordionPanel pb={4}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo consequat.
+            No, you do not need any of these services, Ouroborus and TradingView will take care of all for you!
           </AccordionPanel>
         </AccordionItem>
 
         <AccordionItem>
             <AccordionButton>
               <Box as="span" flex='1' textAlign='left' fontWeight='bold' fontSize={{ base: 'md', md: 'lg', lg: 'xl' }}>
-                Section 2 title
+                Is any service license subscription required?
               </Box>
               <AccordionIcon />
             </AccordionButton>
           <AccordionPanel pb={4}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo consequat.
+            The only required license is (at least) the <b>TradingView Pro</b> license. This is necessary to access the <b>Alert Webhook</b> notification =(
           </AccordionPanel>
         </AccordionItem>
 
         <AccordionItem>
             <AccordionButton>
               <Box as="span" flex='1' textAlign='left' fontWeight='bold' fontSize={{ base: 'md', md: 'lg', lg: 'xl' }}>
-                Section 2 title
+                Is ApolloX a reliable service?
               </Box>
               <AccordionIcon />
             </AccordionButton>
           <AccordionPanel pb={4}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo consequat.
+            <Link href="https://www.apollox.finance/en/futures/BTCBUSD" target="_blank">ApolloX</Link> is the leader in DEX trading. Sponsored by many big companies and used even by PancakeSwap
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
