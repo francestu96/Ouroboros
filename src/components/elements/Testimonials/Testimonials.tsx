@@ -100,7 +100,7 @@ export default function Testimonials() {
             <TestimonialContent>
               <TestimonialHeading>Game Changing</TestimonialHeading>
               <TestimonialText>
-                I've been involved in the crypto trading industry for years, and I can honestly say that Ouroboros is a game-changer, moreover after the big CEX crush of these years!
+                I&apos;ve been involved in the crypto trading industry for years, and I can honestly say that Ouroboros is a game-changer, moreover after the big CEX crush of these years!
               </TestimonialText>
             </TestimonialContent>
             <TestimonialAvatar
