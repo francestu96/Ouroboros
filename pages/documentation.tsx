@@ -129,9 +129,9 @@ const DocumentationPage: NextPage = () => {
                   In the <b>message</b> field you <b>MUST</b> enter the following content:
                 </ListItem>
                 <ListItem>
-                  <Box bgColor="#131722" p="3em" textColor="white" width="65%" margin="auto"  borderRadius="3xl">
+                  <Box bgColor="#131722" p={["1em", "2em", "3em"]} textColor="white" width={["100%", "100%", "65%"]} margin="auto" fontSize={["xs", "inherit"]} borderRadius="3xl">
                     &#123;<br></br>
-                    &emsp;&quot;auth&quot;: &quot;&lt;your_authentication_key_here&gt;&quot;,<br></br>
+                    &emsp;&quot;auth&quot;: &quot;&lt;authentication_key&gt;&quot;,<br></br>
                     &emsp;&quot;exchange&quot;: &quot;&#123;&#123;exchange&#125;&#125;&quot;,<br></br>
                     &emsp;&quot;orderId&quot;:&quot;&#123;&#123;strategy.order.id&#125;&#125;&quot;,<br></br>
                     &emsp;&quot;symbol&quot;: &quot;&#123;&#123;ticker&#125;&#125;&quot;,<br></br>
@@ -157,8 +157,8 @@ const DocumentationPage: NextPage = () => {
                   Enter the following URL in the <b>webhook field</b>:
                 </ListItem>
                 <ListItem>
-                  <Box bgColor="#131722" p="2em" textColor="white" width="60%" margin="auto"  borderRadius="3xl">
-                    https://ouroborus-x.vercel.app/webhook
+                  <Box bgColor="#131722" p={["1em", "2em", "2em"]} textColor="white" width={["100%", "100%", "60%"]} fontSize={["2xs", "xs", "inherit"]} margin="auto" borderRadius="3xl">
+                    <Text align="center">https://ouroborus-x.vercel.app/webhook</Text>
                   </Box>
                 </ListItem>
                 <ListItem>

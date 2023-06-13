@@ -104,7 +104,7 @@ const Header = () => {
                               </Stack>
                             </Link>
                           </NextLink>
-                          <Button size="sm" onClick={() => signOut()}  backgroundColor={colorMode === "dark" ? "#90cdf4" : "#3182ce"}>Sign Out</Button>
+                          <Button size="sm" onClick={() => signOut()}  backgroundColor="main">Sign Out</Button>
                       </PopoverContent>
                     </Popover>
                   </Center>
@@ -112,8 +112,8 @@ const Header = () => {
                 ) : (
                 <>
                   <HStack gap={'10px'}>
-                    <Button size="lg" onClick={() => signIn()}  backgroundColor={colorMode === "dark" ? "#90cdf4" : "#3182ce"}>Sign In</Button> 
-                    <ColorModeButton />
+                    <Button size="lg" onClick={() => signIn()}  backgroundColor="main">Sign In</Button> 
+                    <ColorModeButton size="lg"/>
                   </HStack>
                 </>
               )}

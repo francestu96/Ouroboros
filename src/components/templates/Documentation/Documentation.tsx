@@ -43,7 +43,7 @@ const LinkItems: Array<LinkItemProps> = [
 const Documentation = ({ children }: { children: ReactNode }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Flex minH="100vh" bg={useColorModeValue('gray.100', 'gray.800')} borderRadius="xl">
+    <Flex direction={["column", "column", "row"]} minH="100vh" bg={useColorModeValue('gray.100', 'gray.800')} borderRadius="xl">
       <SidebarContent
         onClose={() => onClose}
         display={{ base: 'none', md: 'block' }}
@@ -63,7 +63,7 @@ const Documentation = ({ children }: { children: ReactNode }) => {
       </Drawer>
       {/* mobilenav */}
       <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
-      <Box flex="auto" p="4rem 8rem">
+      <Box flex="auto" p={["1rem 2rem", "4rem 8rem"]}>
         {children}
       </Box>
     </Flex>
@@ -77,11 +77,12 @@ interface SidebarProps extends BoxProps {
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   return (
     <Box
-      borderRadius="xl"
+      borderRadius={["none", "xl"]}
       bg={useColorModeValue('white', 'gray.800')}
       borderRight="1px"
       borderRightColor={useColorModeValue('gray.200', 'gray.600')}
       w={{ base: 'full', md: 60 }}
+      h={["100vh", "inherit"]}
       {...rest}>
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
@@ -90,7 +91,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} hash={link.hash} icon={link.icon}>
+        <NavItem key={link.name} hash={link.hash} icon={link.icon} onClick={onClose}>
           {link.name}
         </NavItem>
       ))}
@@ -156,7 +157,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         icon={<FiMenu />}
       />
       <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
-        Logo
+        Ouroboros
       </Text>
     </Flex>
   );
