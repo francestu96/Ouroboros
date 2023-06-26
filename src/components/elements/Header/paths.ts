@@ -11,13 +11,13 @@ const NAV_LINKS: ISubNav[] = [
       {
         label: 'Telegram',
         subLabel: 'Follow us on Telegram',
-        href: 'https://t.me/protonxpr',
+        href: 'https://t.me/',
         logo: '/telegram.png',
       },
       {
         label: 'Twitter',
         subLabel: 'Follow us on Twitter',
-        href: 'https://twitter.com/protonxpr',
+        href: 'https://twitter.com/',
         logo: '/twitter.webp',
       },
     ],

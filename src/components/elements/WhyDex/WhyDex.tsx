@@ -1,10 +1,10 @@
-import { Tab, TabList, TabPanel, TabPanels, Tabs, HStack, Box, chakra, shouldForwardProp } from "@chakra-ui/react";
+import { Tab, TabList, TabPanel, TabPanels, Tabs, Box, chakra, shouldForwardProp, Stack } from "@chakra-ui/react";
 import { Text, Image } from '@chakra-ui/react'
 import { motion, isValidMotionProp, useInView } from 'framer-motion'
 import { useRef } from "react";
 
 const animation = { translateX: [-100, 0], opacity: [0, 1] }
-const transition = { duration: "1", ease: "easeInOut" }
+const transition = { duration: "0.5", ease: "easeInOut" }
 
 const ChakraBox = chakra(motion.div, {
   shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -21,13 +21,13 @@ const WhyDex = () => {
       <Text mb='6' color='main' fontSize={{ base: 'xl', md: '2xl', lg: '3xl' }} align='center' fontWeight='bold' mt='12'>Why Dex?</Text>
       <Tabs borderWidth='1px' rounded='lg' p='6' variant='soft-rounded' colorScheme='pink' isFitted>
         <TabList>
-          <Tab fontWeight='bold'>Anonimity</Tab>
-          <Tab fontWeight='bold'>Not Your Keys, Not Your Coins!</Tab>
-          <Tab fontWeight='bold'>Lower Fees</Tab>
+          <Tab fontWeight='bold' fontSize={["sm", "md"]}>Anonimity</Tab>
+          <Tab fontWeight='bold' fontSize={["xs", "md"]}>Not Your Keys, Not Your Coins!</Tab>
+          <Tab fontWeight='bold' fontSize={["sm", "md"]}>Lower Fees</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
-            <HStack>
+            <Stack direction={['column', 'row']}>
               <Text p='6' flex='50'> 
                 Anonymity is certainly one of the main reasons for trading on a DEX. <br></br><br></br>
                 There is <b>no authentication procedure, no KYC, and no personal documents uploaded</b> to servers abroad.<br></br><br></br>
@@ -37,11 +37,11 @@ const WhyDex = () => {
               <Box flex='50'>
                 <Image src="/anonymous.png" borderRadius='3xl' alt=""/>
               </Box>
-            </HStack>
+            </Stack>
           </TabPanel>
           <TabPanel>
-            <ChakraBox ref={tab1_ref} animate={isInView1 ? animation : 'none' } transition={transition}>
-              <HStack>
+            <ChakraBox ref={tab1_ref} animate={isInView1 ? animation : 'none' } transition={transition} opacity="0">
+              <Stack direction={['column', 'row']}>
                 <Text p='6' flex='50'>
                   The quote says: <b>Not your keys, not your coins!</b>.<br></br><br></br>
                   You cannot trust anyone, <b>Centralized Exchange</b> (CEX) included. <br></br><br></br>
@@ -53,12 +53,12 @@ const WhyDex = () => {
                 <Box flex='50'>
                   <Image src="/nyknyc.png" borderRadius='3xl' alt=""/>
                 </Box>
-              </HStack>
+              </Stack>
             </ChakraBox>
           </TabPanel>
           <TabPanel>
-          <ChakraBox ref={tab2_ref} animate={isInView2 ? animation : 'none' } transition={transition}>
-              <HStack>
+          <ChakraBox ref={tab2_ref} animate={isInView2 ? animation : 'none' } transition={transition} opacity="0">
+              <Stack direction={['column', 'row']}>
                 <Text p='6' flex='50'>
                 The generally low-cost trading with a large number of trading pairs takes place via a decentralized server network. <br></br><br></br>
                 This minimizes the risk of a hacker attack enormously and makes inaccessibility due to server failures virtually impossible. <br></br><br></br>
@@ -67,7 +67,7 @@ const WhyDex = () => {
                 <Box flex='50'>
                   <Image src="/fees.png" borderRadius='3xl' alt=""/>
                 </Box>
-              </HStack>
+              </Stack>
             </ChakraBox>
           </TabPanel>
         </TabPanels>

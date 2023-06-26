@@ -42,7 +42,7 @@ const DocumentationPage: NextPage = () => {
                 </ListItem>
                 <ListItem>
                   <ListIcon as={CheckCircleIcon} color='green.500' />
-                  Navigate <b>over your wallet address > API Management</b> to open your API management panel
+                  Navigate <b>over your wallet address &gt; API Management</b> to open your API management panel
                 </ListItem>
                 <ListItem>
                   <Image src="/doc/api.png" boxSize="80%" alt="API Management" margin="auto" borderRadius="3xl"/>
@@ -57,7 +57,7 @@ const DocumentationPage: NextPage = () => {
                 </ListItem>
                 <ListItem>
                   <ListIcon as={CheckCircleIcon} color='green.500' />
-                  Navigate over <b>your profile > My Profile</b> and paste the <b>ApolloX Key</b> and the <b>ApolloX Secret</b>
+                  Navigate over <b>your profile &gt; My Profile</b> and paste the <b>ApolloX Key</b> and the <b>ApolloX Secret</b>
                 </ListItem>
                 <ListItem>
                   <ListIcon as={CheckCircleIcon} color='green.500' />
@@ -155,8 +155,8 @@ const DocumentationPage: NextPage = () => {
                   Enter the following URL in the <b>webhook field</b>:
                 </ListItem>
                 <ListItem>
-                  <Box bgColor="#131722" p="2em" textColor="white" width="60%" margin="auto"  borderRadius="3xl">
-                    https://ouroborus-x.vercel.app/webhook
+                  <Box bgColor="#131722" p={["1em", "2em", "2em"]} textColor="white" width={["100%", "100%", "60%"]} fontSize={["2xs", "xs", "inherit"]} margin="auto" borderRadius="3xl">
+                    <Text align="center">https://ouroborus-x.vercel.app/webhook</Text>
                   </Box>
                 </ListItem>
                 <ListItem>
@@ -192,7 +192,7 @@ const DocumentationPage: NextPage = () => {
           <Stack spacing='8'>
             <Text fontSize='3xl' fontWeight="bold">Too Long To Read</Text>
             <Box bgColor={colorMode == 'light' ? 'gray.600' : 'gray.300'} textColor={colorMode == 'light' ? 'white' : 'black'} borderRadius="xl" background="" p="2rem">
-              Too lazy to read the doc? <br></br> Don't worry, a <b>video tutorial</b> is cooming soon!
+              Too lazy to read the doc? <br></br> Don&apos;t worry, a <b>video tutorial</b> is cooming soon!
             </Box>
           </Stack>
         )
