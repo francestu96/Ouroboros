@@ -130,14 +130,12 @@ const DocumentationPage: NextPage = () => {
                 </ListItem>
                 <ListItem>
                   <Box bgColor="#131722" p="3em" textColor="white" width="65%" margin="auto"  borderRadius="3xl">
-                    &#123;<br></br>
-                    &emsp;"auth": "&lt;your_authentication_key_here&gt;",<br></br>
-                    &emsp;"exchange": "&#123;&#123;exchange&#125;&#125;",<br></br>
-                    &emsp;"orderId":"&#123;&#123;strategy.order.id&#125;&#125;",<br></br>
-                    &emsp;"symbol": "&#123;&#123;ticker&#125;&#125;",<br></br>
-                    &emsp;"action": "&#123;&#123;strategy.order.action&#125;&#125;",<br></br>
-                    &emsp;"size": "&#123;&#123;strategy.order.contracts&#125;&#125;"<br></br>
-                    &#125;
+                    "auth": "&lt;your_authentication_key_here&gt;",<br></br>
+                    "exchange": "&#123;&#123;exchange&#125;&#125;",<br></br>
+                    "orderId":"&#123;&#123;strategy.order.id&#125;&#125;",<br></br>
+                    "symbol": "&#123;&#123;ticker&#125;&#125;",<br></br>
+                    "action": "&#123;&#123;strategy.order.action&#125;&#125;",<br></br>
+                    "size": "&#123;&#123;strategy.order.contracts&#125;&#125;"<br></br>
                   </Box>
                 </ListItem>
                 <ListItem>
