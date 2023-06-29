@@ -190,10 +190,15 @@ const DocumentationPage: NextPage = () => {
       default:
         return (
           <Stack spacing='8'>
-            <Text fontSize='3xl' fontWeight="bold">Too Long To Read</Text>
-            <Box bgColor={colorMode == 'light' ? 'gray.600' : 'gray.300'} textColor={colorMode == 'light' ? 'white' : 'black'} borderRadius="xl" background="" p="2rem">
-              Too lazy to read the doc? <br></br> Don&apos;t worry, a <b>video tutorial</b> is cooming soon!
-            </Box>
+            <Text fontSize='3xl' fontWeight="bold">Too lazy to read the doc? Watch this 5 minutes video!</Text>
+            <Box
+              as='video'
+              controls
+              src='ouroboros_video.mp4'
+              sx={{
+                aspectRatio: '16/9'
+              }}
+            />
           </Stack>
         )
     }
