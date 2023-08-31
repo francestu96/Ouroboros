@@ -62,7 +62,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   await dbConnect();
   const user = await User.findOneAndUpdate({ email }, { name, email, apollox_key, apollox_secret, auth});
   if (!user) {
-    return res.status(400).json({ error: "Telegram ID not found" } as ResponseData);
+    return res.status(400).json({ error: "Email not found" } as ResponseData);
   }
 
   return res.status(200).json({ msg: "Successfuly update user " })
