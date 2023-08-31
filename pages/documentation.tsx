@@ -131,7 +131,6 @@ const DocumentationPage: NextPage = () => {
                 <ListItem>
                   <Box bgColor="#131722" p="3em" textColor="white" width="65%" margin="auto"  borderRadius="3xl">
                   &quot;auth&quot;: &quot;&lt;authentication_key&gt;&quot;,<br></br>
-                  &quot;exchange&quot;: &quot;&#123;&#123;exchange&#125;&#125;&quot;,<br></br>
                   &quot;orderId&quot;:&quot;&#123;&#123;strategy.order.id&#125;&#125;&quot;,<br></br>
                   &quot;symbol&quot;: &quot;&#123;&#123;ticker&#125;&#125;&quot;,<br></br>
                   &quot;action&quot;: &quot;&#123;&#123;strategy.order.action&#125;&#125;&quot;,<br></br>
@@ -156,7 +155,7 @@ const DocumentationPage: NextPage = () => {
                 </ListItem>
                 <ListItem>
                   <Box bgColor="#131722" p={["1em", "2em", "2em"]} textColor="white" width={["100%", "100%", "60%"]} fontSize={["2xs", "xs", "inherit"]} margin="auto" borderRadius="3xl">
-                    <Text align="center">https://ouroborus-x.vercel.app/webhook</Text>
+                    <Text align="center">https://ouroborus-x.vercel.app/api/webhook</Text>
                   </Box>
                 </ListItem>
                 <ListItem>
