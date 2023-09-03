@@ -31,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const data = {
       newClientOrderId: orderId,
       epic: symbol,
-      direction: direction,
+      direction: direction.toUpperCase(),
       size: size,
     }
 

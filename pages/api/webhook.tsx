@@ -25,7 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const data = {
     newClientOrderId: orderId,
     symbol: symbol,
-    side: action,
+    side: action.toUpperCase(),
     type: "MARKET",
     quantity: size,
     recvWindow: "10000",
