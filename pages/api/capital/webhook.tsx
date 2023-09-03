@@ -39,6 +39,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(200).json(order_response.data["dealReference"]);
   }
   catch(error: any) {
+    console.log(error)
     return res.status(error.response.status).json({ error: error.response.data.errorCode});
   }
 }
