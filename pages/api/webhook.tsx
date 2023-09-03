@@ -13,11 +13,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method !== "POST") {
     return res.status(500).json({ error: "This API call only accepts POST methods" });
   }
-
+  
   const { auth, orderId, symbol, action, size } = req.body;    
-
+  
   await dbConnect();
-  const user = await User.findOne({ auth: auth });
+  const sanitize = require('mongo-sanitize');
+  const user = await User.findOne({ auth: sanitize(auth) });
   if (!user) {
     return res.status(500).json({ error: "User authentication not found" });
   }

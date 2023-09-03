@@ -4,14 +4,16 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from 'utils/dbConnect';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  
   if (req.method !== "POST") {
     return res.status(200).json({ error: "This API call only accepts POST methods" });
   }
-
+  
   const { auth, orderId, symbol, direction, size } = req.body;    
-
+  
   await dbConnect();
-  const user = await User.findOne({ auth: auth });
+  const sanitize = require('mongo-sanitize');
+  const user = await User.findOne({ auth: sanitize(auth) });
   if (!user) {
     return res.status(200).json({ error: "User authentication not found" })
   }

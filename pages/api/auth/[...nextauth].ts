@@ -41,9 +41,14 @@ export default NextAuth({
           throw new Error("Email is not registered");
         }
 
+        if(!user.password){
+          throw new Error("Wrong login method");
+        }
+
         if (!(await user.comparePassword(credentials!.password))) {
           throw new Error("Password is incorrect");
         }
+        console.log(credentials)
         return user;
       },
     }),
