@@ -13,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   await dbConnect();
   const user = await User.findOne({ auth: auth });
   if (!user) {
-    return { error: "User authentication not found" };
+    return res.status(200).json({ error: "User authentication not found" })
   }
 
   try{
@@ -36,10 +36,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const order_response = await axios.post(process.env.CAPITAL_URI + "/api/v1/positions", data, config);
-    res.status(200).json(order_response.data["dealReference"]);
+    return res.status(200).json(order_response.data["dealReference"]);
   }
   catch(error: any) {
-    res.status(error.response.status).end(error.response.data.errorCode);
+    return res.status(error.response.status).json({ error: error.response.data.errorCode});
   }
 }
   

@@ -46,10 +46,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try{
     await axios.post(process.env.APOLLOX_URI + "/fapi/v1/order", null, config);
-    res.status(200).end();
+    return res.status(200).end();
   }
   catch(error: any) {
-    res.status(error.response.status).end(error.response.data.msg);
+    return res.status(error.response.status).json({ error: error.response.data.msg });
   }
 }
   
