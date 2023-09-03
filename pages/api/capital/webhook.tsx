@@ -10,13 +10,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   const { auth, orderId, symbol, direction, size } = req.body;    
   
-  try{
-    await dbConnect();
-  }
-  catch(error: any){
-    console.log(error)
-    return res.status(500).json({ error: "Cannot connect to DB" })
-  }
+  await dbConnect();
+
   const sanitize = require('mongo-sanitize');
   const user = await User.findOne({ auth: sanitize(auth) });
   if (!user) {
