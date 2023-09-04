@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(200).json({ error: "This API call only accepts POST methods" });
   }
   
-  const { auth, orderId, symbol, direction, size } = req.body;    
+  const { auth, orderId, symbol, action, size } = req.body;    
   
   await dbConnect();
   const sanitize = require('mongo-sanitize');
@@ -32,7 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const data = {
       newClientOrderId: orderId,
       epic: symbol,
-      direction: direction.toUpperCase(),
+      direction: action.toUpperCase(),
       size: size,
     }
 
