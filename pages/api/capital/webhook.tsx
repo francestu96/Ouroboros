@@ -14,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const sanitize = require('mongo-sanitize');
   const user = auth ? await User.findOne({ auth: sanitize(auth) }) : undefined;
   if (!user) {
-    return res.status(200).json({ error: "User authentication not found" })
+    return res.status(401).json({ error: "User authentication not found" })
   }
 
   try{
