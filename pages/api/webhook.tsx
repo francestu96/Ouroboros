@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import User from 'model/User';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from 'utils/dbConnect';
