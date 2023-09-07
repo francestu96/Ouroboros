@@ -19,15 +19,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const date = new Date(time);
   const embeds = {
-    title: orderId.includes("Close") || orderId.includes("exit") 
-      ? "Close the position and " + action.toUpperCase() + " " + symbol + " at " + price 
+    title: "New " + action.toUpperCase() + " signal!",
+    description: orderId.includes("Close") || orderId.includes("exit")
+      ? "Close the position and " + action.toUpperCase() + " " + symbol + " at " + price + " rate!"
       : action.toUpperCase() + " " + symbol + " at " + price + " rate!",
-    description: symbol + " price is " + price + " on " + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate() + " at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " UTC",
+    footer: {
+      text: date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " UTC on " + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate(),
+    },
     color: action == "buy" ? 5174599 : 16737945
   }
   
   const params = {
-    username: "SKI Calls",
+    username: "SKI Calls",  
     avatar_url: "https://media.licdn.com/dms/image/C4E03AQErzfc9Fgox3w/profile-displayphoto-shrink_800_800/0/1650165235802?e=2147483647&v=beta&t=tCxcXNNHmRcDN5gQLRPK2VhQY4Lxp9u8CTR1jFhx83Q",
     embeds: [ embeds ]
   }
