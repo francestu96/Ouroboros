@@ -5,13 +5,13 @@ import dbConnect from 'utils/dbConnect';
 
 function getOrderType(action: string, orderId: string){
   if(action == "buy"){
-    if(orderId.toLocaleLowerCase() == "long") return "BUY";
-    else if(orderId.toLocaleLowerCase().includes("close") || orderId.toLocaleLowerCase().includes("exit")) return "COVER";
+    if(orderId.toLocaleLowerCase() == "long") return ["BUY", "(Go Long)"];
+    else if(orderId.toLocaleLowerCase().includes("close") || orderId.toLocaleLowerCase().includes("exit")) return ["COVER", "(Exit Short)"];
     else return undefined
   }
   else if(action == "sell"){
-    if(orderId.toLocaleLowerCase() == "short") return "SHORT";
-    else if(orderId.toLocaleLowerCase().includes("close") || orderId.toLocaleLowerCase().includes("exit")) return "SELL";
+    if(orderId.toLocaleLowerCase() == "short") return ["SHORT", "(Go Short)"];
+    else if(orderId.toLocaleLowerCase().includes("close") || orderId.toLocaleLowerCase().includes("exit")) return ["SELL", "(Exit Long)"];
     else return undefined
   }
   else return undefined;
@@ -43,8 +43,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const embeds = {
-    title: "New " + orderType + " signal!",
-    description: orderType + " " + symbol + " at " + price,
+    title: "New " + orderType[0] + " signal!",
+    description: orderType[0] + " " + orderType[1] + " " + symbol + " at " + price,
     footer: {
       text: date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " UTC on " + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate(),
     },
