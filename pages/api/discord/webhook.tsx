@@ -3,12 +3,31 @@ import User from 'model/User';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from 'utils/dbConnect';
 
+function getOrderType(action: string, orderId: string){
+  if(action == "buy"){
+    if(orderId.toLocaleLowerCase() == "long") return "BUY";
+    else if(orderId.toLocaleLowerCase().includes("close") || orderId.toLocaleLowerCase().includes("exit")) return "COVER";
+    else return undefined
+  }
+  else if(action == "sell"){
+    if(orderId.toLocaleLowerCase() == "short") return "SHORT";
+    else if(orderId.toLocaleLowerCase().includes("close") || orderId.toLocaleLowerCase().includes("exit")) return "SELL";
+    else return undefined
+  }
+  else return undefined;
+}
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "This API call only accepts POST methods" });
   }
   
-  const { auth, orderId, symbol, action, price, time } = req.body;    
+  const { auth, orderId, symbol, action, price, time } = req.body; 
+  
+  const missing = [{auth}, {orderId}, {symbol}, {action}, {price}, {time}].filter((x: any) => !x[Object.keys(x)[0]]);
+  if(missing.length > 0){
+    return res.status(500).json({ error: "Missing mandatory fields: " + missing.map((x: any) => Object.keys(x)[0]).join(", ")});
+  }
   
   await dbConnect();
   const sanitize = require('mongo-sanitize');
@@ -18,11 +37,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const date = new Date(time);
+  const orderType = getOrderType(action, orderId);
+  if(!orderType){
+    return res.status(500).json({ error: "'action'='" + action + "' and 'orderId'='" + orderId + "' mismatch. Cannot get if BUY, SELL, SHORT or COVER"});
+  }
+
   const embeds = {
-    title: "New " + action.toUpperCase() + " signal!",
-    description: orderId.includes("Close") || orderId.includes("exit")
-      ? "Close the position and " + action.toUpperCase() + " " + symbol + " at " + price + " rate!"
-      : action.toUpperCase() + " " + symbol + " at " + price + " rate!",
+    title: "New " + orderType + " signal!",
+    description: orderType + " " + symbol + " at " + price,
     footer: {
       text: date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " UTC on " + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate(),
     },

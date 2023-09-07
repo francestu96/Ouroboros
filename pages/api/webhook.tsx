@@ -16,6 +16,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   const { auth, orderId, symbol, action, size } = req.body;    
   
+  const missing = [{auth}, {orderId}, {symbol}, {action}, {size}].filter((x: any) => !x[Object.keys(x)[0]]);
+  if(missing.length > 0){
+    return res.status(500).json({ error: "Missing mandatory fields: " + missing.map((x: any) => Object.keys(x)[0]).join(", ")});
+  }
+
   await dbConnect();
   const sanitize = require('mongo-sanitize');
   const user = auth ? await User.findOne({ auth: sanitize(auth) }) : undefined;
