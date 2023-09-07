@@ -44,7 +44,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const embeds = {
     title: "New " + orderType[0] + " signal!",
-    description: orderType[0] + " " + orderType[1] + " " + symbol + " at " + price,
+    description: orderType[0] + " " + orderType[1] + " " + symbol + " at " + price + " @everyone",
     footer: {
       text: date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " UTC on " + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate(),
     },
