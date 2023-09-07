@@ -5,7 +5,7 @@ import dbConnect from 'utils/dbConnect';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
-    return res.status(200).json({ error: "This API call only accepts POST methods" });
+    return res.status(405).json({ error: "This API call only accepts POST methods" });
   }
   
   const { auth, orderId, symbol, action, size } = req.body;    
