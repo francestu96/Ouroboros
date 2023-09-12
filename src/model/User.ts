@@ -30,6 +30,22 @@ const userSchema = new Schema({
     type: String,
     required: false,
   },
+  capital_api: {
+    type: String,
+    required: false,
+  },
+  capital_api_password: {
+    type: String,
+    required: false,
+  },
+  discord_url: {
+    type: String,
+    required: false,
+  },
+  telegram_url: {
+    type: String,
+    required: false,
+  },
   auth: {
     type: String,
     required: false,
@@ -51,3 +67,19 @@ userSchema.methods.comparePassword = async function(enteredPassword: string){
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);
 export default User;
+
+type UserModel = {
+  name: string,
+  password: string,
+  email: string,
+  image?: string,
+  apollox_key?: string,
+  apollox_secret?: string,
+  capital_api?: string,
+  capital_api_password?: string,
+  discord_url?: string,
+  telegram_url?: string,
+  auth?: string
+}
+
+export type { UserModel };

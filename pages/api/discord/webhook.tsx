@@ -1,5 +1,5 @@
 import axios from 'axios';
-import User from 'model/User';
+import User, { UserModel } from 'model/User';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from 'utils/dbConnect';
 
@@ -31,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   await dbConnect();
   const sanitize = require('mongo-sanitize');
-  const user = auth ? await User.findOne({ auth: sanitize(auth) }) : undefined;
+  const user: UserModel | null = auth ? await User.findOne({ auth: sanitize(auth) }) : null;
   if (!user) {
     return res.status(401).json({ error: "User authentication not found" });
   }
@@ -58,8 +58,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try{
-    await axios.post(user.apollox_key, JSON.stringify(params), {headers: {'Content-type': 'application/json'}});
-    return res.status(200).end();
+    if(user.discord_url){
+      await axios.post(user.discord_url, JSON.stringify(params), {headers: {'Content-type': 'application/json'}});
+      return res.status(200).end();
+    }
+    else{
+      return res.status(500).json({error: "User discord URL not set"});
+    }
   }
   catch(error: any) {
     return res.status(error.response.status).json({ error: error.response.data.message });
