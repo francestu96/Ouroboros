@@ -44,7 +44,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const embeds = {
     title: "New " + orderType[0] + " signal!",
-    description: orderType[0] + " " + orderType[1] + " " + symbol + " at " + price + " @everyone",
+    description: orderType[0] + " " + orderType[1] + " " + symbol + " at " + price,
     footer: {
       text: date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " UTC on " + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate(),
     },
@@ -53,6 +53,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   const params = {
     username: "SKI Calls",  
+    content: "@everyone",
     avatar_url: "https://media.licdn.com/dms/image/C4E03AQErzfc9Fgox3w/profile-displayphoto-shrink_800_800/0/1650165235802?e=2147483647&v=beta&t=tCxcXNNHmRcDN5gQLRPK2VhQY4Lxp9u8CTR1jFhx83Q",
     embeds: [ embeds ]
   }
