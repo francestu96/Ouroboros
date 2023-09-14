@@ -67,7 +67,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try{
       if(user.discord_url){
         await axios.post(user.discord_url, JSON.stringify(params), {headers: {'Content-type': 'application/json'}});
-        return res.status(200).end();
       }
       else{
         return res.status(500).json({error: "User Discord URL not set"});
