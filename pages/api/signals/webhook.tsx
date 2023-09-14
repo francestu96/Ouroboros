@@ -22,13 +22,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ error: "This API call only accepts POST methods" });
   }
   
-  const { auth, orderId, symbol, action, price, time, discord, telegram } = req.body; 
+  const { auth, orderId, symbol, action, price, datetime, discord, telegram, timezone } = req.body; 
 
   if(!discord && !telegram){
     return res.status(500).json({ error: "No Discord nor Telegram channel enabled"});
   }
   
-  const missing = [{auth}, {orderId}, {symbol}, {action}, {price}, {time}].filter((x: any) => !x[Object.keys(x)[0]]);
+  const missing = [{auth}, {orderId}, {symbol}, {action}, {price}, {datetime}].filter((x: any) => !x[Object.keys(x)[0]]);
   if(missing.length > 0){
     return res.status(500).json({ error: "Missing mandatory fields: " + missing.map((x: any) => Object.keys(x)[0]).join(", ")});
   }
@@ -41,7 +41,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(401).json({ error: "User authentication not found" });
   }
 
-  const date = new Date(time);
+  const datetimeObj = new Date(datetime);
+  const date = datetime.substring(0, 10);
+  try{
+    var time = datetimeObj.toLocaleTimeString(undefined, {timeZone: timezone || "UTC", hour: "2-digit", minute: "2-digit", hourCycle: "h24"});
+  }
+  catch{
+    return res.status(500).json({ error: "Wrong timezone: " + timezone });
+  }
+
   const orderType = getOrderType(action, orderId);
   if(!orderType){
     return res.status(500).json({ error: "'action'='" + action + "' and 'orderId'='" + orderId + "' mismatch. Cannot get if BUY, SELL, SHORT or COVER"});
@@ -52,7 +60,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       title: "New " + orderType[0] + " signal!",
       description: orderType[0] + " " + orderType[1] + " " + symbol + " at " + price,
       footer: {
-        text: date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " UTC on " + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate(),
+        text: time + " " + (timezone || "UTC") + " on " + date,
       },
       color: action == "buy" ? 5174599 : 16737945
     }
@@ -80,7 +88,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if(telegram){
     try{
       const data = { 
-        text: "<b>New " + orderType[0] + " signal!</b>\n" + orderType[0] + " " + orderType[1] + " <b>" + symbol + "</b> at <b>" + price + "</b>\n\n" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " UTC on " + date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate(),
+        text: "<b>New " + orderType[0] + " signal!</b>\n" + orderType[0] + " " + orderType[1] + " <b>" + symbol + "</b> at <b>" + price + "</b>\n\n" + time + " " + (timezone || "UTC") + " on " + date,
         parse_mode: "HTML" 
       };
       if(user.telegram_url){
