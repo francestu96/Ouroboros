@@ -5,6 +5,7 @@ import dbConnect from 'utils/dbConnect';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
+    console.log("This API call only accepts POST methods");
     return res.status(405).json({ error: "This API call only accepts POST methods" });
   }
   
@@ -12,6 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   const missing = [{auth}, {orderId}, {symbol}, {action}, {size}].filter((x: any) => !x[Object.keys(x)[0]]);
   if(missing.length > 0){
+    console.log("Missing mandatory fields: " + missing.map((x: any) => Object.keys(x)[0]).join(", "));
     return res.status(500).json({ error: "Missing mandatory fields: " + missing.map((x: any) => Object.keys(x)[0]).join(", ")});
   }
   
@@ -19,6 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const sanitize = require('mongo-sanitize');
   const user: UserModel | null = auth ? await User.findOne({ auth: sanitize(auth) }) : null;
   if (!user) {
+    console.log("User authentication not found");
     return res.status(401).json({ error: "User authentication not found" })
   }
 
@@ -45,7 +48,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(200).json(order_response.data["dealReference"]);
   }
   catch(error: any) {
-    console.log(error)
+    console.log(error);
     return res.status(error.response.status).json({ error: error.response.data.errorCode});
   }
 }
