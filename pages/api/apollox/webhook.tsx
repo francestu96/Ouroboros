@@ -1,8 +1,8 @@
 import axios from 'axios';
-import User from 'model/User';
-import type { NextApiRequest, NextApiResponse } from 'next';
-import dbConnect from 'utils/dbConnect';
 import crypto from 'crypto';
+import User from 'model/User';
+import dbConnect from 'utils/dbConnect';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 function signKey(key: string, data: string) {
   const bufferArray = new TextEncoder().encode(key);

@@ -2,6 +2,7 @@ import { Button, chakra, Flex, Heading, Link, shouldForwardProp, Stack, useBreak
 import { Text, Image } from '@chakra-ui/react'
 import { motion, isValidMotionProp } from 'framer-motion'
 import { signIn } from "next-auth/react";
+import { Logo } from "../Logo";
 
 const imageAnimation = { scale: [0, 1.1, 1, 1.05, 1], rotate: [0, -720, 720, 0, 0], opacity: [0, 1, 1, 1, 1] };
 const textAnimation = { translateX: [-100, 0], opacity: [0, 1] }
@@ -44,7 +45,7 @@ const Hero = () => {
       </Flex>
       <Flex flex={1} borderRadius='10%' align={'center'} justify={'center'} bgColor={useColorModeValue('gray.700', 'white')}>
         <ChakraBox animate={imageAnimation} transition={transition} opacity="0">
-          <Image alt={'Ouroboros logo'} src={useColorModeValue("/logo-hero-light.png", "/logo-hero-dark.png")} borderRadius='inherit'/>
+          <Logo/>
         </ChakraBox>
       </Flex>
     </Stack>
