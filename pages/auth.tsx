@@ -1,6 +1,7 @@
-import { Auth, Default } from "components/templates";
-import { NextPage } from "next";
+import Default from "components/templates/Default";
 import { getProviders } from "next-auth/react";
+import Auth from "components/templates/Auth";
+import { NextPage } from "next";
 
 const HomePage: NextPage = (props) => {
   return (
