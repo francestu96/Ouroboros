@@ -18,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const key = process.env.KEY || "";
     const iv = process.env.IV || "";
 
-    const cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), Buffer.from(iv));
+    const cipher = crypto.createCipheriv('aes-128-cbc', Buffer.from(key), Buffer.from(iv));
     let encrypted = cipher.update(compressed);
     encrypted = Buffer.concat([encrypted, cipher.final()]);
     const authKey = encrypted.toString('base64');

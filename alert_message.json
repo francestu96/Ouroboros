@@ -1,8 +1,7 @@
 {
-    "auth": "fZ@kYHoweRYjd9e7Mc&*e!7i",
-    "exchange": "{{exchange}}",
-    "orderId":"{{strategy.order.id}}",
-    "symbol": "{{ticker}}",
+    "authKey": "<your Authentication Key>",
+    "chain": "<preferred chain>",
+    "symbol": "<collateral asset>",
     "action": "{{strategy.order.action}}",
     "size": "{{strategy.order.contracts}}"
 }
