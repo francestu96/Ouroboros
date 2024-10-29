@@ -12,19 +12,19 @@ const Hero = () => {
                         Welcome to
                     </Text>
                     <br />
-                    <Text fontFamily="CustomFont" backgroundImage={"linear-gradient(to right, #DA3F5E, #9945FF, #00cdff)"} backgroundClip="text" fill="transparent" as={"span"}>
+                    <Text px="5" fontFamily="CustomFont" backgroundImage={"linear-gradient(to right, #DA3F5E, #9945FF, #00cdff)"} backgroundClip="text" fill="transparent" as={"span"}>
                         Ouroboros
                     </Text>
                 </Heading>
                 <Text m="2" fontSize={["xs", "s", "md", "lg", "md", "lg"]}>
-                    Welcome to Ouroboros, your gateway to seamless integration between your <b>TradingView</b> trading strategies and <b>GMX</b> exchange.<br/><br/>
-                    Step into a world where trading becomes a finely tuned art, where precision meets innovation. Whether you're a seasoned trader or just starting out, <b>Ouroboros</b> empowers you to harness the power of your strategies with the efficiency of GMX exchange.<br/><br/> 
+                    Welcome to Ouroboros, your gateway to seamless integration between your <b>TradingView</b> trading strategies and <b>Hyperliquid</b> exchange.<br/><br/>
+                    Step into a world where trading becomes a finely tuned art, where precision meets innovation. Whether you're a seasoned trader or just starting out, <b>Ouroboros</b> empowers you to harness the power of your strategies with the efficiency of Hyperliquid exchange.<br/><br/> 
                     Dive in, explore, and unleash the full potential of your trading journey. <br/><b>Welcome aboard!</b>
                 </Text>
                 <HStack>
-                    <Link href="/authkey">
+                    <Link href="/setup">
                         <Button leftIcon={<FaPlay />} rounded={"full"} bg={"main"} color={"white"} _hover={{ bg: "gray.200", color: "gray.700" }}>
-                            Get Started
+                            Set up in 5 minutes
                         </Button>
                     </Link>
                     <Link href="https://cisco0x60.gitbook.io/ouroboros/" target="_blank">

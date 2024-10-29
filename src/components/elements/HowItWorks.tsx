@@ -20,7 +20,7 @@ const HowItWorks = () => {
 
   return (
     <VStack borderTop='1px' borderTopColor="chakra-border-color" borderRadius='3xl' mb="10">
-      <Center pt="20" pb="10" fontFamily="CustomFont" fontWeight="bold" fontSize={{ base: 'xl', md: '2xl', lg: '4xl' }} backgroundImage={"linear-gradient(to right, #DA3F5E, #9945FF, #00cdff)"} backgroundClip="text" fill="transparent">
+      <Center pt="20" pb="5" fontFamily="CustomFont" fontWeight="bold" fontSize={{ base: 'xl', md: '2xl', lg: '4xl' }} backgroundImage={"linear-gradient(to right, #DA3F5E, #9945FF, #00cdff)"} backgroundClip="text" fill="transparent">
         How It Works
       </Center>
       <Stack width="85%" bg={useColorModeValue('#2F3849', 'gray.200')} pt='6' rounded='lg' borderWidth="1px" borderColor="main" boxShadow="25px 25px 50px -12px rgba(255, 0, 0, 0.25)">
@@ -30,11 +30,11 @@ const HowItWorks = () => {
               <Image rounded={'lg'} height={230} width={282} objectFit={'cover'} src='/desk.png' alt="" />
             </Box>
             <Stack pt={10} align={'center'}>
-              <Heading fontSize={'2xl'} fontFamily={'CustomFont'} fontWeight={800} textAlign='center'>
+              <Heading fontSize={'xl'} fontFamily={'CustomFont'} fontWeight={800} textAlign='center'>
                 Create your auth key
               </Heading>
               <Text fontWeight={400} fontSize="lg">
-                Create your <Link href="/authkey" color="main" target="_blank">Authentication Key</Link> in our platform to be able to connect your wallet to <b>TradingView</b><br/><br/>Your <b>private key</b> is not stored anyware to avoid data leaks! 
+                Create your <Link href="/setup" color="main" target="_blank">Authentication Key</Link> in our platform to be able to connect your wallet to <b>TradingView</b><br/><br/>Your <b>private key</b> is not stored anyware to avoid data leaks! 
               </Text>
             </Stack>
           </ChakraBox>
@@ -43,7 +43,7 @@ const HowItWorks = () => {
               <Image rounded={'lg'} height={230} width={282} objectFit={'cover'} src='/connect.png' alt="" />
             </Box>
             <Stack pt={10} align={'center'}>
-              <Heading fontSize={'2xl'} fontFamily={'CustomFont'} fontWeight={800} textAlign='center'>
+              <Heading fontSize={'xl'} fontFamily={'CustomFont'} fontWeight={800} textAlign='center'>
                 Configure TradingView alerts
               </Heading>
               <Text fontWeight={400} fontSize="lg">
@@ -56,12 +56,12 @@ const HowItWorks = () => {
               <Image rounded={'lg'} height={230} width={282} objectFit={'cover'} src='/trade.png' alt="" />
             </Box>
             <Stack pt={10} align={'center'}>
-              <Heading fontSize={'2xl'} fontFamily={'CustomFont'} fontWeight={800} textAlign='center'>
+              <Heading fontSize={'xl'} fontFamily={'CustomFont'} fontWeight={800} textAlign='center'>
                 Automatic execution by DEX
               </Heading>
               <Stack direction={'row'} align={'center'}>
                 <Text fontWeight={400} fontSize="lg">
-                  <b>Ouroboros</b> will process the alert message and execute your orders to <b>GMX</b> DEX within 1 second.<br/><br/>You don't need to worry about anything and you save time to make your strategies better and better!
+                  <b>Ouroboros</b> will process the alert message and execute your orders to <b>Hyperliquid</b> DEX within 1 second.<br/><br/>You don't need to worry about anything and you save time to make your strategies better and better!
                 </Text>
               </Stack>
             </Stack>

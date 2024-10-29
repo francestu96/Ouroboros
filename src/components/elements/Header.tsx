@@ -5,6 +5,7 @@ import { ISubNav } from './SubNav';
 import NavItem from './NavItem';
 import React from 'react';
 import Logo from './Logo';
+import { FaPlay } from 'react-icons/fa';
 
 const NAV_LINKS: ISubNav[] = [
   { label: 'Home', href: '/' },
@@ -43,8 +44,8 @@ const Header = () => {
           ))}
         </HStack>
         <HStack alignItems="center" gap={'10px'}>
-          <Link href="/authkey">
-            <Button size="md" backgroundColor="main">Create Auth Key</Button>
+          <Link href="/setup">
+            <Button size="md" backgroundColor="main" leftIcon={<FaPlay/>}>Get Started</Button>
           </Link>
           <ColorModeButton />
         </HStack>
@@ -61,7 +62,7 @@ const Header = () => {
           </Flex>
           <VStack gap={'15px'}>
             <HStack gap={'10px'}>
-              <Link href="/authkey">
+              <Link href="/setup">
                 <Button size="lg" backgroundColor="main">Create Auth Key</Button>
               </Link>
               <ColorModeButton size="lg" />

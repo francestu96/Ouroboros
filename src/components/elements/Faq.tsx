@@ -61,12 +61,12 @@ const Faq = () => {
           <AccordionItem>
             <AccordionButton>
               <Box as="span" flex='1' textAlign='left' fontWeight='bold' fontSize={{ base: 'md', md: 'lg', lg: 'xl' }}>
-                Is GMX a reliable service?
+                Is Hyperliquid a reliable service?
               </Box>
               <AccordionIcon />
             </AccordionButton>
             <AccordionPanel pb={4}>
-              <Link href="https://gmx.io/" target="_blank" color="main">GMX</Link> is the leader platform in DEX trading. Milions in volumes and thousands of active users are constantly ralying on this amazing platform.
+              <Link href="https://hyperliquid.xyz/" target="_blank" color="main">Hyperliquid</Link> is the leader platform in DEX trading. Milions in volumes and thousands of active users are constantly ralying on this amazing platform.
             </AccordionPanel>
           </AccordionItem>
 
@@ -78,7 +78,7 @@ const Faq = () => {
               <AccordionIcon />
             </AccordionButton>
             <AccordionPanel pb={4}>
-              Ourobors rely on <Link href="https://gmx.io/" target="_blank" color="main">GMX</Link>, thus it supports all their chains. Their eco-system is constantly growing to provide the best service to all users.
+              Ourobors rely on <Link href="https://hyperliquid.xyz/" target="_blank" color="main">Hyperliquid</Link>, thus it supports all their chains. Their eco-system is constantly growing to provide the best service to all users.
             </AccordionPanel>
           </AccordionItem>
         </Accordion>

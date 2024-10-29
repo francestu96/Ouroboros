@@ -18,7 +18,7 @@ const WhyDex = () => {
   
   return (
     <VStack backgroundImage="abstract.png" backgroundSize="contain" borderTop='1px' borderTopColor="chakra-border-color" borderRadius='3xl' mb="10">
-      <Center pt="20" pb="10" fontFamily="CustomFont" fontWeight="bold" fontSize={{ base: 'xl', md: '2xl', lg: '4xl' }} backgroundImage={"linear-gradient(to right, #DA3F5E, #9945FF, #00cdff)"} backgroundClip="text" fill="transparent">
+      <Center pt="20" pb="5" fontFamily="CustomFont" fontWeight="bold" fontSize={{ base: 'xl', md: '2xl', lg: '4xl' }} backgroundImage={"linear-gradient(to right, #DA3F5E, #9945FF, #00cdff)"} backgroundClip="text" fill="transparent">
         Why DEX
       </Center>
       <Tabs background="gray.800" borderWidth='1px' rounded='lg' p='6' variant='soft-rounded' colorScheme='pink' isFitted width="80%">
