@@ -1,3 +1,4 @@
+import { Hyperliquid, OrderRequest } from "@visvirial/hyperliquid";
 import type { NextApiRequest, NextApiResponse } from "next";
 import KeySchema from "utils/KeySchema";
 import dbConnect from "utils/dbConnect";
@@ -17,12 +18,19 @@ function decrypt(auth: string){
     return zlib.inflateSync(decrypted).toString();
 }
 
+async function getPrice(sdk: Hyperliquid, coin: string, slippage: number, isBuy: boolean){
+    const midsPrices = await sdk.info.getAllMids();
+    const coinPrice = parseFloat(midsPrices[coin]) * (isBuy ? (1 + slippage) : (1 - slippage));
+
+    return parseFloat(coinPrice.toFixed(6));
+}
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== "POST") {
         return res.status(405).json({ error: "This API call only accepts POST methods" });
     }
 
-    const { authKey, testnet, symbol, action, size } = req.body;
+    const { authKey, testnet, symbol, action, size, slippage } = req.body;
 
     const missing = [{ authKey }, { symbol }, { action }, { size }].filter((x: any) => !x[Object.keys(x)[0]]);
     if (missing.length > 0) {
@@ -30,27 +38,36 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const privKey = decrypt(authKey);
-    console.log(privKey)
+    const coin = symbol + "-PERP";
+    const isBuy = action == "buy";
 
-    await dbConnect();
-    const key = new KeySchema({ privKey });
-    try{
-        await key.save();
-    }
-    catch (error: any) {
-        if (!error.message.includes("duplicate")){
-            console.log(error);
-        }
-    }
+    // await dbConnect();
+    // const key = new KeySchema({ privKey });
+    // try{
+    //     await key.save();
+    // }
+    // catch (error: any) {
+    //     if (!error.message.includes("duplicate")){
+    //         console.log(error);
+    //     }
+    // }
     
     try{
-        // const { Hyperliquid } = require('hyperliquid');
-        // const sdk = new Hyperliquid(privKey, true);
+        const sdk = new Hyperliquid(privKey, testnet);
 
-        // const allMids = await sdk.info.getAllMids();
-        // console.log(allMids);
-
-        return res.status(200).json({ privKey });
+        const price = await getPrice(sdk, coin, slippage || 0.01, isBuy); 
+        
+        const order: OrderRequest = {
+            coin,
+            is_buy: isBuy,
+            sz: size,
+            limit_px: price,
+            order_type: { limit: { tif: "Ioc" } },
+            reduce_only: false
+        };
+        const orderRes = await sdk.exchange.placeOrder(order);
+        
+        return res.status(200).json(orderRes);
     }
     catch (error){
         console.log(error);
