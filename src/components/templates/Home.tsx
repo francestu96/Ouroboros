@@ -5,10 +5,10 @@ import WhyDex from 'components/elements/WhyDex';
 import Hero from 'components/elements/Hero';
 import Faq from 'components/elements/Faq';
 
-const Home = () => {
+const Home =  ({ appUrl }: { appUrl: string }) => {
   return (
     <>
-      <Hero></Hero>
+      <Hero appUrl={appUrl}></Hero>
       <HowItWorks></HowItWorks>
       <WhyDex></WhyDex>
       <Numbers></Numbers>

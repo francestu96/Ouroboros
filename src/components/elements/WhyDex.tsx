@@ -21,17 +21,17 @@ const WhyDex = () => {
       <Center pt="20" pb="5" fontFamily="CustomFont" fontWeight="bold" fontSize={{ base: 'xl', md: '2xl', lg: '4xl' }} backgroundImage={"linear-gradient(to right, #DA3F5E, #9945FF, #00cdff)"} backgroundClip="text" fill="transparent">
         Why DEX
       </Center>
-      <Tabs background="gray.800" borderWidth='1px' rounded='lg' p='6' variant='soft-rounded' colorScheme='pink' isFitted width="80%">
+      <Tabs background="gray.800" borderWidth='1px' p='6' colorScheme='pink' isFitted width="80%">
         <TabList>
-          <Tab fontWeight='bold' fontSize={["sm", "md"]}>Anonymity</Tab>
-          <Tab fontWeight='bold' fontSize={["xs", "md"]}>NYK NYC!</Tab>
+          <Tab fontWeight='bold' fontSize={["sm", "md"]}>Privacy</Tab>
+          <Tab fontWeight='bold' fontSize={["xs", "md"]}>Enhanced Security</Tab>
           <Tab fontWeight='bold' fontSize={["sm", "md"]}>Lower Fees</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
             <Stack direction={['column', 'row']}>
               <Text p={["0", "2", "4", "6"]} flex="50"> 
-                Anonymity ensures that your financial activities remain confidential.<br/><br/>
+                Privacy ensures that your financial activities remain confidential.<br/><br/>
                 Without exposing personal details or transaction histories, users can execute trades with confidence, free from the scrutiny of third parties.<br/><br/>
                 DEXs prioritize user privacy by eliminating the need for personal information like IDs or verification documents.<br/><br/>
                 This shields traders from potential data breaches or identity theft, fostering a secure trading environment.<br/><br/>
