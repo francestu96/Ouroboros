@@ -13,16 +13,18 @@ const Hero = ({ appUrl }: { appUrl: string }) => {
                 <Heading fontSize={["xl", "2xl", "3xl", "4xl", "3xl", "5xl"]}>
                     <Text as={"span"}>
                         Welcome to
-                    </Text>
-                    <br />
+                    </Text><br/>
                     <Text px="5" fontFamily="CustomFont" backgroundImage={"linear-gradient(to right, #DA3F5E, #9945FF, #00cdff)"} backgroundClip="text" fill="transparent" as={"span"}>
                         Ouroboros
+                    </Text><br/>
+                    <Text px="10" fontSize={["xl"]} fontWeight="normal" color="gray.200">
+                        "Where Gains Feed Gains"
                     </Text>
                 </Heading>
                 <Text m="2" fontSize={["xs", "s", "md", "lg", "md", "lg"]}>
-                    Welcome to Ouroboros, the cutting-edge platform for managing innovative trading strategies.<br/>
+                    Be part of <b>Ouroboros</b>, the cutting-edge platform for managing innovative trading strategies.<br/>
                     Our system harnesses the power of <b>TradingView's PineScript</b> and the efficiency of the <b><a href="https://hyperfoundation.org/" target="_blank">Hyperliquid</a></b> DEX to execute trades seamlessly.<br/><br/> 
-                    We bring together expert-reviewed strategies and community insights to create a dynamic trading environment. 
+                    We bring together <b>expert-reviewed</b> strategies and <b>community insights</b> to create a dynamic trading environment. 
                     Every strategy is carefully vetted by our developers before it goes live, ensuring reliability and performance.<br/><br/> 
                     Dive in, explore, and unleash the full potential of your trading journey. <br/><b>Welcome aboard!</b>
                 </Text>

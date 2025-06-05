@@ -75,7 +75,7 @@ export default function Testimonials() {
                                 I have been using Ouroboros for a few months now, and I am blown away by its reliability and ease of use.
                             </TestimonialText>
                         </TestimonialContent>
-                        <TestimonialAvatar src={'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa'} name={'Jane Cooper'} title={'@TBD.'} />
+                        <TestimonialAvatar src={'https://yt3.googleusercontent.com/WKpfhoL3O1z8ySRk7DDaqHXiniUy02gah9slXqpTQu9C-BaisVA_LLIn-Yxe19ILMonhgRg=s160-c-k-c0x00ffffff-no-rj'} name={'Defi Maso'} title={'@DefiMaso'} />
                     </Testimonial>
                     <Testimonial>
                         <TestimonialContent>
