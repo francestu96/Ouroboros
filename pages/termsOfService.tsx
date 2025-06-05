@@ -21,7 +21,7 @@ const TermsOfService: NextPage = () => {
                 <Text fontSize="sm">
                     <b>Last Revised on October 10, 2024</b><br></br><br></br>
 
-                    Welcome to the Terms of Service (these “Terms”) for: (i) the website, https://ouroboros.xyz (including its subdomains, the “Foundation Site”); and (ii) any other websites through which these Terms are linked (together with the Foundation Site, the “Website”), in each case as operated by or on behalf of the Hyper Foundation, a Cayman Islands foundation company, or its subsidiaries (“Organization”, “we” or “us”). The Organization’s services, including but not limited to the Website and any content, tools, software, documentation, features, and functionality offered by the Organization on or through the Website or third-party sites and services, are collectively referred to as the “Services”.<br></br>
+                    Welcome to the Terms of Service (these “Terms”) for: (i) the website, https://ouroboros-community.xyz (including its subdomains, the “Foundation Site”); and (ii) any other websites through which these Terms are linked (together with the Foundation Site, the “Website”), in each case as operated by or on behalf of the Hyper Foundation, a Cayman Islands foundation company, or its subsidiaries (“Organization”, “we” or “us”). The Organization’s services, including but not limited to the Website and any content, tools, software, documentation, features, and functionality offered by the Organization on or through the Website or third-party sites and services, are collectively referred to as the “Services”.<br></br>
 
                     These Terms govern your access to and use of the Services. Read these Terms carefully, as they include important information about your legal rights. By accessing and/or using the Services, you are agreeing to these Terms. If you do not understand or agree to these Terms, you may not use the Services.<br></br>
 
@@ -79,7 +79,7 @@ const TermsOfService: NextPage = () => {
 
                     <b><br></br>5. Location of Our Privacy Policy and Other Policies<br></br></b>
 
-                    5.1. Privacy Policy. Our Privacy Policy describes how we handle the information you provide to us when you use the Services. For an explanation of our privacy practices, visit our Privacy Policy located at https://ouroboros.xyz/privacypolicy.<br></br>
+                    5.1. Privacy Policy. Our Privacy Policy describes how we handle the information you provide to us when you use the Services. For an explanation of our privacy practices, visit our Privacy Policy located at https://ouroboros-community.xyz/privacypolicy.<br></br>
 
                     <b><br></br>6. Disclaimers, Limitations of Liability and Indemnification<br></br></b>
 
