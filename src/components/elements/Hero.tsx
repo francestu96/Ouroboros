@@ -30,7 +30,7 @@ const Hero = ({ appUrl }: { appUrl: string }) => {
                     <Button leftIcon={<FaPlay />} rounded={"lg"} bg={"main"} color={"white"} _hover={{ bg: "gray.200", color: "gray.700" }} onClick={onOpenModal}>
                         Go to the App
                     </Button>
-                    <Link href="https://cisco0x60.gitbook.io/ouroboros/" target="_blank">
+                    <Link href="https://ourboros-doc.gitbook.io/ouroboros/" target="_blank">
                         <Button leftIcon={<IoDocument />} rounded={"lg"} bg={"gray.700"} color={"white"} _hover={{ bg: "gray.200", color: "gray.700" }}>
                             Documentation
                         </Button>

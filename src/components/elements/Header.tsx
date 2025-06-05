@@ -9,7 +9,7 @@ import AwareModal from './AwareModal';
 
 const NAV_LINKS: ISubNav[] = [
     { label: 'Home', href: '/' },
-    { label: 'Documentation', src: 'https://cisco0x60.gitbook.io/ouroboros/' },
+    { label: 'Documentation', src: 'https://ourboros-doc.gitbook.io/ouroboros/' },
     { label: 'F.A.Q.', href: '/#faq' },
     {
         label: 'Community',
