@@ -19,13 +19,13 @@ const WhyDex = () => {
   return (
     <VStack backgroundImage="abstract.png" backgroundSize="contain" borderTop='1px' borderTopColor="chakra-border-color" borderRadius='3xl' mb="10">
       <Center pt="20" pb="5" fontFamily="CustomFont" fontWeight="bold" fontSize={{ base: 'xl', md: '2xl', lg: '4xl' }} backgroundImage={"linear-gradient(to right, #DA3F5E, #9945FF, #00cdff)"} backgroundClip="text" fill="transparent">
-        Why DEX
+        Why Hyperliquid
       </Center>
       <Tabs background="gray.800" borderWidth='1px' p='6' colorScheme='pink' isFitted width="80%">
         <TabList>
           <Tab fontWeight='bold' fontSize={["sm", "md"]}>Privacy</Tab>
           <Tab fontWeight='bold' fontSize={["xs", "md"]}>Enhanced Security</Tab>
-          <Tab fontWeight='bold' fontSize={["sm", "md"]}>Lower Fees</Tab>
+          <Tab fontWeight='bold' fontSize={["sm", "md"]}>Best performances</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
@@ -63,13 +63,15 @@ const WhyDex = () => {
           <ChakraBox ref={tab2_ref} animate={isInView2 ? animation : 'none' } transition={transition} opacity="0">
               <Stack direction={['column', 'row']}>
                 <Text p={["0", "2", "4", "6"]} flex="50">
-                  Traditional centralized exchanges often involve multiple intermediaries, each charging fees for their services.<br/><br/>
-                  DEXs, on the other hand, operate directly on blockchain networks, cutting out the need for intermediaries altogether. This streamlined process results in lower overhead costs and ultimately translates to lower fees for users.<br/><br/>
-                  DEXs facilitate peer-to-peer trading, where buyers and sellers interact directly without the involvement of a central authority. Since there's no intermediary facilitating transactions, there are no additional fees associated with order matching or settlement.<br/><br/>
-                  This direct interaction between users helps minimize costs and ensures that traders retain a larger portion of their profits.
+                    <b>Hyperliquid DEX</b> offers a seamless trading experience with ultra-fast execution, zero gas fees, and deep liquidity all on a fully decentralized, high-performance layer-1.<br/><br/>
+                    It combines the <b>speed and efficiency</b> of centralized exchanges with the security and transparency of <b>DeFi</b>, making it ideal for both professional traders and everyday users. 
+                    With a scalable and optimized architecture, <b>Hyperliquid</b> ensures consistent performance even under heavy network demand.<br/><br/>
+                    Built for <b>high-throughput trading</b>, it enables precise order matching and minimal slippage across markets.<br/>
+                    Its permissionless design empowers users with full custody of assets while eliminating intermediaries.<br/><br/>
+                    By removing gas fees and improving capital efficiency, <b>Hyperliquid</b> creates a frictionless trading environment that pushes DeFi toward its next evolution.
                 </Text>
                 <Box flex='50'>
-                  <Image src="/fees.png" borderRadius='3xl' alt=""/>
+                  <Image src="/performance.jpg" borderRadius='3xl' alt=""/>
                 </Box>
               </Stack>
             </ChakraBox>

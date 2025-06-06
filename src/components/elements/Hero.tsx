@@ -40,7 +40,7 @@ const Hero = ({ appUrl }: { appUrl: string }) => {
                 </HStack>
             </Stack>
             <Box className="animated-hero-border" w={["100%", "100%", "100%", "100%", "60%"]} display="flex" position="relative" justifyContent="end" clipPath="polygon(0 0, 100% 0%, 100% 100%, 0 60%)">
-                <Image className="animated-hero-img" w="99.2%" h="98%" objectFit="cover" src="anonymous.jpg" alt="background" clipPath={["polygon(0 0, 100% 0, 100% 96%, 0 57.5%)", "polygon(0 0, 100% 0%, 100% 100%, 0 60.5%)"]} />
+                <Image className="animated-hero-img" w="99.2%" h="98%" objectFit="cover" src="hero.jpg" alt="background" clipPath={["polygon(0 0, 100% 0, 100% 96%, 0 57.5%)", "polygon(0 0, 100% 0%, 100% 100%, 0 60.5%)"]} />
             </Box>
             <AwareModal appUrl={appUrl || ""} isOpen={isOpenModal} onClose={onCloseModal}/>
         </Stack>
