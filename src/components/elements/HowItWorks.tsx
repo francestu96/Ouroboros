@@ -30,10 +30,10 @@ const HowItWorks = () => {
                             <Image rounded={'lg'} height={230} width={282} objectFit={'cover'} src='/find.jpeg' alt="" />
                         </Box>
                         <Stack pt={10} align={'center'}>
-                            <Heading fontSize={'xl'} fontWeight={800} textAlign='center'>
+                            <Heading fontSize={['md', 'lg', 'xl']} fontWeight={800} textAlign='center'>
                                 Discover Strategies
                             </Heading>
-                            <Text fontWeight={400} fontSize="lg">
+                            <Text fontWeight={400} fontSize={['sm', 'md', 'lg']}>
                                 Explore our curated library of trading <b>strategies</b>, each designed with precision and thoroughly vetted by expert developers.<br/><br/>
                                 Learn about the features and historical performance to find the perfect match for your trading goals.
                             </Text>
@@ -44,10 +44,10 @@ const HowItWorks = () => {
                             <Image rounded={'lg'} height={230} width={282} objectFit={'cover'} src='/subs.jpeg' alt="" />
                         </Box>
                         <Stack pt={10} align={'center'}>
-                            <Heading fontSize={'xl'} fontWeight={800} textAlign='center'>
+                            <Heading fontSize={['md', 'lg', 'xl']} fontWeight={800} textAlign='center'>
                                 Subscribe & Activate
                             </Heading>
-                            <Text fontWeight={400} fontSize="lg">
+                            <Text fontWeight={400} fontSize={['sm', 'md', 'lg']}>
                                 Choose the <b>strategies</b> that resonate with your trading style and subscribe with a single click.<br/><br/>
                                 Your orders will be executed automatically on <b><a href="https://hyperfoundation.org/" target="_blank">Hyperliquid</a></b>, allowing you to trade effortlessly.
                             </Text>
@@ -58,11 +58,11 @@ const HowItWorks = () => {
                             <Image rounded={'lg'} height={230} width={282} objectFit={'cover'} src='/growth.jpeg' alt="" />
                         </Box>
                         <Stack pt={10} align={'center'}>
-                            <Heading fontSize={'xl'} fontWeight={800} textAlign='center'>
+                            <Heading fontSize={['md', 'lg', 'xl']} fontWeight={800} textAlign='center'>
                                 Earn & Grow
                             </Heading>
                             <Stack direction={'row'} align={'center'}>
-                                <Text fontWeight={400} fontSize="lg">
+                                <Text fontWeight={400} fontSize={['sm', 'md', 'lg']}>
                                     Benefit from our fair revenue-sharing model where both strategy creators and referrers are rewarded for <b>profitable trades</b>.<br/><br/>
                                     Share your success and help <b>grow our community</b> while enjoying seamless automated trading.
                                 </Text>

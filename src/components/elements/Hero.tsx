@@ -17,7 +17,7 @@ const Hero = ({ appUrl }: { appUrl: string }) => {
                     <Text px="5" fontFamily="CustomFont" backgroundImage={"linear-gradient(to right, #DA3F5E, #9945FF, #00cdff)"} backgroundClip="text" fill="transparent" as={"span"}>
                         Ouroboros
                     </Text><br/>
-                    <Text px="10" fontSize={["xl"]} fontWeight="normal" color="gray.200">
+                    <Text px="10" fontSize={["xs", "sm", "md", "lg", "xl"]} fontWeight="normal" color="gray.200">
                         "Where Gains Feed Gains"
                     </Text>
                 </Heading>
@@ -29,7 +29,7 @@ const Hero = ({ appUrl }: { appUrl: string }) => {
                     Dive in, explore, and unleash the full potential of your trading journey. <br/><b>Welcome aboard!</b>
                 </Text>
                 <HStack>
-                    <Button leftIcon={<FaPlay />} rounded={"lg"} bg={"main"} color={"white"} _hover={{ bg: "gray.200", color: "gray.700" }} onClick={onOpenModal}>
+                    <Button leftIcon={<FaPlay />} rounded={"lg"} bg={"main"} color={"white"} _hover={{ bg: "gray.200", color: "gray.700" }} onClick={onOpenModal} fontSize={["xs", "md"]}>
                         Go to the App
                     </Button>
                     <Link href="https://ourboros-doc.gitbook.io/ouroboros/" target="_blank">

@@ -25,10 +25,10 @@ const WhyDex = () => {
         <TabList>
           <Tab fontWeight='bold' fontSize={["sm", "md"]}>Privacy</Tab>
           <Tab fontWeight='bold' fontSize={["xs", "md"]}>Enhanced Security</Tab>
-          <Tab fontWeight='bold' fontSize={["sm", "md"]}>Best performances</Tab>
+          <Tab fontWeight='bold' fontSize={["xs", "md"]}>Best performances</Tab>
         </TabList>
-        <TabPanels>
-          <TabPanel>
+        <TabPanels fontSize={["sm", "md"]}>
+          <TabPanel px={[0, 2, 4]} textAlign={["center", "center", "left"]}>
             <Stack direction={['column', 'row']}>
               <Text p={["0", "2", "4", "6"]} flex="50"> 
                 Privacy ensures that your financial activities remain confidential.<br/><br/>
@@ -42,7 +42,7 @@ const WhyDex = () => {
               </Box>
             </Stack>
           </TabPanel>
-          <TabPanel>
+          <TabPanel  px={[0, 2, 4]} textAlign={["center", "center", "left"]}>
             <ChakraBox ref={tab1_ref} animate={isInView1 ? animation : 'none' } transition={transition} opacity="0">
               <Stack direction={['column', 'row']}>
                 <Text p={["0", "2", "4", "6"]} flex="50">
@@ -59,7 +59,7 @@ const WhyDex = () => {
               </Stack>
             </ChakraBox>
           </TabPanel>
-          <TabPanel>
+          <TabPanel  px={[0, 2, 4]} textAlign={["center", "center", "left"]}>
           <ChakraBox ref={tab2_ref} animate={isInView2 ? animation : 'none' } transition={transition} opacity="0">
               <Stack direction={['column', 'row']}>
                 <Text p={["0", "2", "4", "6"]} flex="50">

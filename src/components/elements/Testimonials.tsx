@@ -56,7 +56,7 @@ export default function Testimonials() {
                     <Text textAlign="center" fontSize="4xl" fontWeight="bold" fontFamily="CustomFont" px="10" backgroundImage={'linear-gradient(to right, #DA3F5E, #9945FF, #00cdff)'} backgroundClip="text" fill="transparent">
                         Our Testimonials Speak
                     </Text>
-                    <Text>We have been working with clients around the world</Text>
+                    <Text textAlign={["center", "center", "left"]}>We have been working with clients around the world</Text>
                 </Stack>
                 <Stack direction={{ base: 'column', md: 'row' }} spacing={{ base: 10, md: 4, lg: 10 }}>
                     <Testimonial>
